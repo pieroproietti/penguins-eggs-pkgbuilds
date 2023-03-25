@@ -1,3 +1,4 @@
 git clone ssh://aur@aur.archlinux.org/penguins-eggs.git AUR-DEST
 cp aur/penguins-eggs/PKGBUILD AUR-DEST
+cp aur/penguins-eggs/.SRCINFO AUR-DEST
 cd AUR-DEST
