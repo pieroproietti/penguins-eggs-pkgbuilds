@@ -49,13 +49,11 @@ package() {
   cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
     "${pkgdir}/usr/lib/${pkgname}/"
 
-
   # Fix permissions
   chown root:root "dist" "node_modules"
 
   # Package contains reference to $srcdir
   find node_modules -type f -print0 | xargs --null sed -i "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
-
 
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
   cp -r -t "${pkgdir}/usr/lib/${pkgname}/" addons assets bin conf dist ipxe node_modules mkinitcpio pnpm-lock.yaml scripts .oclif.manifest.json
