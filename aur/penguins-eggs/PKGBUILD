@@ -8,15 +8,15 @@
 pkgname=penguins-eggs
 pkgver=9.4.3
 pkgrel=2
-pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
+pkgdesc="remaster the system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
 license=('GPL2')
-depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub' 
-         'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso'
-         'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'npm' 'pacman-contrib' 'parted' 
-         'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux' 
-         'xdg-utils')
+depends=(
+  'arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub' 
+  'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso'
+  'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'npm' 'pacman-contrib' 'parted' 
+  'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux' 'xdg-utils')
 optdepends=(
   'bash-completion: eggs autocomplete' 
   'zsh-completions: eggs autocomplete' 
