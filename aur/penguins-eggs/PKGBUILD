@@ -17,7 +17,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 options=('!strip')
 _commit=d42e7f82fc620f1031165510184f293ffc93c2e8  # v9.4.3
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
@@ -30,9 +30,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  # install pnpm
-  npm set prefix "pnpm-dir"
-  npm install -g pnpm
   pnpm config set cache-dir "$srcdir/pnpm-cache"
   pnpm i
   pnpm build
