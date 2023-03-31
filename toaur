@@ -4,5 +4,3 @@ cp aur/penguins-eggs/.SRCINFO AUR-DEST
 cd AUR-DEST
 git add -A
 echo "git commit, then git push"
-
-
