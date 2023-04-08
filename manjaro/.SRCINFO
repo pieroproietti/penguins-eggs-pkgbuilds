@@ -1,7 +1,7 @@
 pkgbase = penguins-eggs
 	pkgdesc = remaster the system and redistribute it as live images on usb sticks or via PXE
-	pkgver = 9.4.3
-	pkgrel = 2
+	pkgver = 9.4.4
+	pkgrel = 1
 	url = https://penguins-eggs.net
 	arch = any
 	license = GPL2
@@ -36,7 +36,7 @@ pkgbase = penguins-eggs
 	optdepends = zsh-completions: eggs autocomplete
 	optdepends = calamares: system installer GUI
 	options = !strip
-	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=302b2ece198f301ca946adbe0b19d96373a5c4cb
+	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=c2dec814c5b6ff209dd19ccfc028641e6267d693
 	sha256sums = SKIP
 
 pkgname = penguins-eggs
