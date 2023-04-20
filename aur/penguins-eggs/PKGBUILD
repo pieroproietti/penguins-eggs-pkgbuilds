@@ -4,7 +4,7 @@
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
 #_commit=c2dec814c5b6ff209dd19ccfc028641e6267d693  # v9.4.5
-_commit=b0191ea85450e04ffc0c36c65d5669cfbc3d7d7c  # v9.4.6
+_commit=74a70d484211f9a21db73315d433a9bb55aa16fa  # v9.4.6
 
 pkgname=penguins-eggs
 pkgver=9.4.5
