@@ -20,7 +20,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'npm')
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
