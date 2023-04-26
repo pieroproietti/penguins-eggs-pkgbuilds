@@ -32,7 +32,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  sudo npm i pnpm -g
+  # install pnpm with npm
+  npm set prefix "pnpm-dir"
+  npm install -g pnpm
+
   pnpm config set cache-dir "$srcdir/pnpm-cache"
   pnpm i
   pnpm build
