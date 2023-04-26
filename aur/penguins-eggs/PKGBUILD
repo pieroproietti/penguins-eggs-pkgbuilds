@@ -32,13 +32,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  # install pnpm with npm
   npm set prefix "pnpm-dir"
   npm install -g pnpm
-
-  pnpm config set cache-dir "$srcdir/pnpm-cache"
-  pnpm i
-  pnpm build
+  
+  pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
+  pnpm-dir/bin/pnpm install
+  pnpm-dir/bin/pnpm build
 }
 
 package() {
