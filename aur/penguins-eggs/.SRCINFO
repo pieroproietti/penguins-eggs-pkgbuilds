@@ -36,7 +36,7 @@ pkgbase = penguins-eggs
 	optdepends = zsh-completions: eggs autocomplete
 	optdepends = calamares: system installer GUI
 	options = !strip
-	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=80e13ec9e641860dae1d96cab5d9949f9f6cf7df
+	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=cc30a97760400c2bc07f035609889de1495f313d
 	sha256sums = SKIP
 
 pkgname = penguins-eggs
