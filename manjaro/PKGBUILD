@@ -1,17 +1,16 @@
 # Maintainer: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-# Contributor: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Muflone https://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
-_commit=c2dec814c5b6ff209dd19ccfc028641e6267d693  # v9.4.5
 pkgname=penguins-eggs
-pkgver=9.4.5
-pkgrel=1
-pkgdesc="remaster the system and redistribute it as live images on usb sticks or via PXE"
+pkgver=9.5.2
+pkgrel=3
+pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
 license=('GPL2')
-depends=('arch-install-scripts' 'dosfstools'  'erofs-utils'  'findutils' 'grub'
+depends=('arch-install-scripts' 'dosfstools'  'erofs-utils' 'findutils' 'grub'
          'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'manjaro-tools-iso'
          'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'pacman-contrib' 'parted'
          'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux'
@@ -19,8 +18,9 @@ depends=('arch-install-scripts' 'dosfstools'  'erofs-utils'  'findutils' 'grub'
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'nodejs>=16' 'pnpm')
 options=('!strip')
+_commit=6e3fa6d11ecea315447c8065ddd29b8a36d4f7d7  # v9.5.2-3
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  pnpm config set cache-dir "$srcdir/pnpm-cache"
+  export PNPM_HOME="$srcdir/pnpm-home"
   pnpm i
   pnpm build
 }
