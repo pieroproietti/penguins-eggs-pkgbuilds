@@ -20,7 +20,7 @@ optdepends=('bash-completion: eggs autocomplete'
             'calamares: system installer GUI')
 makedepends=('git' 'nodejs>=16' 'pnpm')
 options=('!strip')
-_commit=6e3fa6d11ecea315447c8065ddd29b8a36d4f7d7  # v9.5.2-3
+_commit=6692ed74e1ce02a3799c9431e0d826412eee39a4  # v9.5.2-4
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
 
