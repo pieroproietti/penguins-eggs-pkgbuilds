@@ -1,6 +1,6 @@
 #https://github.com/calamares/calamares/releases
 
-pkgname=eggs-calamares
+pkgname=calamares-eggs
 _pkgname=calamares
 pkgver=3.3.0.r10619.4a821b6e3
 pkgrel=1
