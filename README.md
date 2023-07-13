@@ -1,4 +1,4 @@
-# penguins-eggs PKGBUILDs
+eggs PKGBUILDs
 
 # Arch (AUR)
 * [calamares-eggs](./aur/calamares-eggs)
