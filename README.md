@@ -1,7 +1,7 @@
 # penguins-eggs PKGBUILDs
 
 # Arch (AUR)
-* [ckbcomp](/aur/ckbcomp/PKGBUILD)
+* [calamares-eggs](./aur/calamares-eggs)
 * [penguins-eggs](https://aur.archlinux.org/packages/penguins-eggs)
 ## # [Publish](./PUBLISH.md)
 
