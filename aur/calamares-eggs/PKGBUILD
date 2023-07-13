@@ -2,7 +2,7 @@
 
 pkgname=calamares-eggs
 _pkgname=calamares
-pkgver=3.3.0.r10619.4a821b6e3
+pkgver=3.3.0.r10616.11e1659ca
 pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=('x86_64') # esclusa'i686' 
@@ -77,8 +77,8 @@ build() {
 package() {
 	cd ${_pkgname}/build
 	make DESTDIR="$pkgdir" install
-	install -Dm644 "$srcdir/cal-arcolinux.desktop" "$pkgdir/usr/share/applications/cal-arcolinux.desktop"
-	install -Dm644 "$srcdir/cal-arcolinux-debugging.desktop" "$pkgdir/usr/share/applications/cal-arcolinux-debugging.desktop"
+	install -Dm644 "$srcdir/calamares-eggs.desktop" "$pkgdir/usr/share/applications/cal-arcolinux.desktop"
+	install -Dm644 "$srcdir/calamares-eggs-debugging.desktop" "$pkgdir/usr/share/applications/cal-arcolinux-debugging.desktop"
 	install -Dm755 "$srcdir/calamares_polkit" "$pkgdir/usr/bin/calamares_polkit"
 	rm "$pkgdir/usr/share/applications/calamares.desktop"
 }
