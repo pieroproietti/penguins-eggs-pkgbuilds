@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Install ArcoLinux Debug
-Comment=Installer for ArcoLinux debug
+Name=Install Calamares Debug
+Comment=Installer for Arch Linux debug
 GenericName=System Installer
 Keywords=calamares;system;installer;
 TryExec=/usr/bin/calamares_polkit %f -d -style breeze

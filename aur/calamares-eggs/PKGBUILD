@@ -26,8 +26,8 @@ source=("$_pkgname::git+https://github.com/calamares/calamares"
 	"calamares_polkit")
 
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
+            '4e40b88a7c7f0fe0062ac24111799d03e38d058f191592284f7292edb3987264'
+            '64bd1455e85e836625b828e4a9fd679e73acbdbb2a2e1e6d19a663494f016e51'
             '966c5f0834039dc6a7529e75f70417ba2510b1e643ffb49fd25855ce9dc244b4')
 
 pkgver() {
