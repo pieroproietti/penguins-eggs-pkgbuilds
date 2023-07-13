@@ -1,7 +1,11 @@
-# calamares-eggs
+# penguins-eggs PKGBUILDs
 
-Questo PKGBUILD è stato preso da arcolinux-calamares-pkgbuilds di Erik Dubois, ho scelto la versione arco-calamares-git e la sto modificando per integrarla con penguins-eggs.
+# Arch (AUR)
+* [ckbcomp](/aur/ckbcomp/PKGBUILD)
+* [penguins-eggs](https://aur.archlinux.org/packages/penguins-eggs)
+## # [Publish](./PUBLISH.md)
 
-Devo dire la verità, non mi piace impelagarmi con le uova di calamaro, ma per sostenere la crescita delle uova di pinguino, questo ed altro!
+# Manjaro (Community)
+* [penguins-eggs](https://gitlab.manjaro.org/packages/community/penguins-eggs)
 
 
