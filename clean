@@ -1,6 +1,5 @@
 clear
 echo "Cleaning penguins-eggs..."
-cd aur/penguins-eggs
 rm aur/penguins-eggs/penguins-eggs* -rf
 rm aur/penguins-eggs/pkg -rf
 rm aur/penguins-eggs/src -rf
