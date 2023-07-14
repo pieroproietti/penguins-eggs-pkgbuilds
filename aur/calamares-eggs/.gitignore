@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!modules/
+!.gitignore
+!calamares_polkit
+!calamares-eggs-debugging.desktop
+!calamares-eggs.desktop
+!export.sh
+!PKGBUILD
+!README.md
