@@ -3,5 +3,6 @@
 
 # But not these files...
 !.gitignore
-!PKGBUILD
 !.SRCINFO
+!export.sh
+!PKGBUILD

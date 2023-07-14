@@ -1,1 +1,1 @@
-scp calamares-3* artisan@192.168.1.2:/home/artisan/arch-packages/
+scp calamares-eggs-3* artisan@192.168.1.2:/home/artisan/arch-packages/

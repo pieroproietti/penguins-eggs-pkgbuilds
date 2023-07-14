@@ -1,0 +1,1 @@
+scp penguins-eggs-* artisan@192.168.1.2:/home/artisan/arch-packages/
