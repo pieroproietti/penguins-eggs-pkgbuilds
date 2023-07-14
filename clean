@@ -5,7 +5,7 @@ rm aur/penguins-eggs/pkg -rf
 rm aur/penguins-eggs/src -rf
 echo 
 echo "Cleaning calamares-eggs..."
-rm aur/penguins-eggs/calamares-3* -f
-rm aur/penguins-eggs/calamares -rf
-rm aur/penguins-eggs/pkg -rf
-rm aur/penguins-eggs/src -rf
+rm aur/calamares-3* -f
+rm aur/calamares-eggs/calamares -rf
+rm aur/calamares-eggs/pkg -rf
+rm aur/calamares-eggs/src -rf
