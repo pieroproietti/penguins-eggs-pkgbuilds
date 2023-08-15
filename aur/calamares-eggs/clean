@@ -1,0 +1,4 @@
+rm calamares -rf
+rm calamares-eggs-3*
+rm pkg -rf
+rm src -rf

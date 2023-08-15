@@ -7,6 +7,7 @@
 !calamares_polkit
 !calamares-eggs-debugging.desktop
 !calamares-eggs.desktop
+!clean
 !export.sh
 !PKGBUILD
 !README.md
