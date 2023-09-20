@@ -1,1 +1,0 @@
-scp calamares-eggs-3* artisan@192.168.1.2:/home/artisan/sourceforge/PKGBUILD
