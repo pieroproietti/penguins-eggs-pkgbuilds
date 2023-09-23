@@ -2,7 +2,7 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=ec59ab4f9d7f336933a26b3c38ddb042a189c664
+_commit=2e0837ee1bdd1aae13d666a28ff6ce20c059b446
 pkgname=penguins-eggs
 pkgver=9.5.26
 pkgrel=2
