@@ -45,7 +45,7 @@ optdepends=(
   'calamares: system installer GUI'
 )
 options=('!strip')
-_commit=21ac29c79c9c099a444f1e45423dad7d2c833472
+_commit=e77072ec2b81acf8d19858e4c776f2be0acb2432
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
 
