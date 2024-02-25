@@ -1,10 +1,11 @@
+# Manjaro
 # Maintainer: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 # Contributor: Muflone https://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
 pkgname=penguins-eggs
-pkgver=9.5.25
+pkgver=9.6.32
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -20,7 +21,7 @@ optdepends=('bash-completion: eggs autocomplete'
             'calamares: system installer GUI')
 makedepends=('git' 'nodejs>=16') #  'pnpm'
 options=('!strip')
-_commit=d300da2fd159626c1ab1d12fdab705df2ac03524 # v9.5.25
+_commit=21ac29c79c9c099a444f1e45423dad7d2c833472
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 sha256sums=('SKIP')
 
