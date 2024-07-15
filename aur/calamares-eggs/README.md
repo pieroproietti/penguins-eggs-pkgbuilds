@@ -1,5 +1,6 @@
 # calamares-eggs
 
-Sto cercando di avere un PKGBUILD semplice da gestire che mi fornisca calamares aggiornato su arc
+ing to have an easy to manage PKGBUILD that provides me with updated calamares on Arch Linux.
 
-Sono partito da https://aur.archlinux.org/calamares-git.git
+I started from https://aur.archlinux.org/calamares-git.git.
+
