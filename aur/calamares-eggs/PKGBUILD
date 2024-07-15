@@ -5,8 +5,8 @@
 
 _pkgname="calamares"
 pkgname="$_pkgname-eggs"
-_pkgcommit=80ef430185212b9312bf30ef4eba9890c7a9fcfe
-pkgver=3.3.9.r5.g456bb1b
+_commit=80ef430185212b9312bf30ef4eba9890c7a9fcfe
+pkgver=3.3.8.r39.g80ef430
 pkgrel=1
 pkgdesc="calamares-eggs: supply by penguins-eggs project"
 url="https://github.com/calamares/calamares"
@@ -52,9 +52,10 @@ backup=(
 )
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-)
+source=("git+https://github.com/calamares/calamares#commit=${_commit}")
+#source=(
+#  "$_pkgsrc"::"git+$url.git"
+#)
 
 sha256sums=(
   'SKIP'
