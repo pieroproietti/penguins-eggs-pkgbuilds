@@ -17,6 +17,7 @@ pkgbase = calamares-eggs
 	depends = hwinfo
 	depends = kconfig
 	depends = kcoreaddons
+	depends = kcrash
 	depends = ki18n
 	depends = kiconthemes
 	depends = kpmcore

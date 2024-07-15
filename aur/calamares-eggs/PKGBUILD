@@ -19,6 +19,7 @@ depends=(
   'hwinfo'
   'kconfig'
   'kcoreaddons'
+  'kcrash' # inserted piero 
   'ki18n'
   'kiconthemes'
   'kpmcore'
