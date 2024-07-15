@@ -1,5 +1,7 @@
 # Maintainer:
-# Contributor: Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
+# Piero Proietti <piero[dot]proietti[at]gmail.com>
+# Original from : Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
+# 
 
 _pkgname="calamares"
 pkgname="$_pkgname-eggs"
@@ -52,11 +54,10 @@ backup=(
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  #"yay-support.patch"
 )
+
 sha256sums=(
   'SKIP'
-  #'SKIP'
 )
 
 pkgver() {
@@ -92,7 +93,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  #git apply ../yay-support.patch
 }
 
 
