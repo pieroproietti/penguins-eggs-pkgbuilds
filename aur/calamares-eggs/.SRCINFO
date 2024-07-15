@@ -1,5 +1,5 @@
 pkgbase = calamares-eggs
-	pkgdesc = Distribution-independent installer framework
+	pkgdesc = calamares-eggs to use with penguins-eggs
 	pkgver = 3.3.9.r5.g456bb1b
 	pkgrel = 1
 	url = https://github.com/calamares/calamares
@@ -32,8 +32,6 @@ pkgbase = calamares-eggs
 	provides = calamares=3.3.9
 	conflicts = calamares
 	source = calamares::git+https://github.com/calamares/calamares.git
-	source = yay-support.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = calamares-eggs

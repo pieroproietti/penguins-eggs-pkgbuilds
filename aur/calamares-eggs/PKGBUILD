@@ -2,12 +2,11 @@
 # Contributor: Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
 
 _pkgname="calamares"
-#pkgname="$_pkgname-git"
 pkgname="$_pkgname-eggs"
 _pkgcommit=80ef430185212b9312bf30ef4eba9890c7a9fcfe
 pkgver=3.3.9.r5.g456bb1b
 pkgrel=1
-pkgdesc="Distribution-independent installer framework"
+pkgdesc="calamares-eggs: supply by penguins-eggs project"
 url="https://github.com/calamares/calamares"
 license=("GPL-3.0-or-later")
 arch=('i686' 'x86_64')
@@ -53,11 +52,11 @@ backup=(
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  "yay-support.patch"
+  #"yay-support.patch"
 )
 sha256sums=(
   'SKIP'
-  'SKIP'
+  #'SKIP'
 )
 
 pkgver() {
@@ -93,7 +92,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  git apply ../yay-support.patch
+  #git apply ../yay-support.patch
 }
 
 
