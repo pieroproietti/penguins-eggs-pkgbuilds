@@ -53,10 +53,6 @@ backup=(
 
 _pkgsrc="$_pkgname"
 source=("git+https://github.com/calamares/calamares#commit=${_commit}")
-#source=(
-#  "$_pkgsrc"::"git+$url.git"
-#)
-
 sha256sums=(
   'SKIP'
 )
