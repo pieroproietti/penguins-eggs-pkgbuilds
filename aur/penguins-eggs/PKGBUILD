@@ -2,7 +2,7 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=94110b1282d850ac757f720e5146263289c7d3cb
+_commit=136a1387aaecadaf32ce3b21e7e25a5f5b2d12f5
 pkgname=penguins-eggs
 pkgver=10.0.20
 pkgrel=1
@@ -17,7 +17,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'git' 'gr
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
@@ -30,12 +30,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  npm set prefix "pnpm-dir"
-  npm install -g pnpm
-  
-  pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
-  pnpm-dir/bin/pnpm install
-  pnpm-dir/bin/pnpm build
+  /usr/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
+  /usr/bin/pnpm install
+  /usr/bin/pnpm build  
 }
 
 package() {
@@ -84,4 +81,3 @@ package() {
   # Install icon
   install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
-
