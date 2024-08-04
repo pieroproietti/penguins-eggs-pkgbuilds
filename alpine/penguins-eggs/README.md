@@ -5,6 +5,9 @@ Install alpine-sdk
 doas apk add alpine-sdk
 ```
 
+# configurazione
+/etc/abuild.conf
+
 abuild Commands:
 * `build`       Compile and install package into $pkgdir
 * `check`       Run any defined tests concerning the package

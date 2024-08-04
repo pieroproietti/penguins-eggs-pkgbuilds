@@ -1,17 +1,16 @@
-# Alpine
-#
-# Mantainer: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=94110b1282d850ac757f720e5146263289c7d3cb
+# Contributor: Piero Proietti <piero.proietti@gmail.com>
+# Maintainer: Piero Proietti <piero.proietti@gmail.com>
 pkgname=penguins-eggs
 pkgver=10.0.20
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
-arch='any'
 url="https://penguins-eggs.net"
-license='GPL2'
+arch="all"
+license="GPL"
 depends="
     alpine-conf 
     apk-tools 
+    bash-completion 
     cryptsetup 
     curl 
     dosfstools 
@@ -30,13 +29,19 @@ depends="
     squashfs-tools 
     sshfs 
     xorriso "
-optdepends=" bash-completion 
-            zsh-completions "
-makedepends=" git
-            npm "
-options='!strip'
+depends_dev=" git npm "
+makedepends="$depends_dev"
+#install=
+#subpackages="$pkgname-dev $pkgname-doc"
+#source="https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
 source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
 sha256sums='SKIP'
+
+builddir="$srcdir"/$pkgname-$pkgver
+
+prepare() {
+	cd "$builddir"
+}
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -44,58 +49,65 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  npm set prefix "pnpm-dir"
-  npm install -g pnpm
-  
-  pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
-  pnpm-dir/bin/pnpm install
-  pnpm-dir/bin/pnpm build
+    cd "${srcdir}/${pkgname}"
+    npm set prefix "pnpm-dir"
+    npm install -g pnpm
+    
+    pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
+    pnpm-dir/bin/pnpm install
+    pnpm-dir/bin/pnpm build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  install -Dm644 .oclif.manifest.json package.json -t "${pkgdir}/usr/lib/${pkgname}/"
-  cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
-    "${pkgdir}/usr/lib/${pkgname}/"
+    cd "${srcdir}/${pkgname}"
+    install -Dm644 .oclif.manifest.json package.json -t "${pkgdir}/usr/lib/${pkgname}/"
+    cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
+        "${pkgdir}/usr/lib/${pkgname}/"
 
-  # Fix permissions
-  chown root:root "${pkgdir}/usr/lib/${pkgname}/"{dist,node_modules}
+    # Fix permissions
+    chown root:root "${pkgdir}/usr/lib/${pkgname}/"{dist,node_modules}
 
-  # Package contains reference to $srcdir
-  find "${pkgdir}/usr/lib/${pkgname}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+    # Package contains reference to $srcdir
+    find "${pkgdir}/usr/lib/${pkgname}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-  local tmppackage="$(mktemp)"
-  local pkgjson="${pkgdir}/usr/lib/${pkgname}/package.json"
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
-  mv "${tmppackage}" "${pkgjson}"
-  chmod 644 "${pkgjson}"
+    local tmppackage="$(mktemp)"
+    local pkgjson="${pkgdir}/usr/lib/${pkgname}/package.json"
+    jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
+    mv "${tmppackage}" "${pkgjson}"
+    chmod 644 "${pkgjson}"
 
-  # Fix paths for node modules
-  find node_modules -type f -print0 | xargs --null sed -i \
-    "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
+    # Fix paths for node modules
+    find node_modules -type f -print0 | xargs --null sed -i \
+        "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
 
-  # Install documentation
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    # Install documentation
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  # Symlink executable
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/bin/run.js" "${pkgdir}/usr/bin/eggs"
+    # Symlink executable
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${pkgname}/bin/run.js" "${pkgdir}/usr/bin/eggs"
 
-  # Install shell completion files
-  install -d "${pkgdir}/usr/share/bash-completion/completions"
-  mv "${pkgdir}/usr/lib/${pkgname}/scripts/eggs.bash" \
-    "${pkgdir}/usr/share/bash-completion/completions/"
-  install -d "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
-  mv "${pkgdir}/usr/lib/${pkgname}/scripts/_eggs" \
-    "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
+    # Install shell completion files
+    install -d "${pkgdir}/usr/share/bash-completion/completions"
+    mv "${pkgdir}/usr/lib/${pkgname}/scripts/eggs.bash" \
+        "${pkgdir}/usr/share/bash-completion/completions/"
+    install -d "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
+    mv "${pkgdir}/usr/lib/${pkgname}/scripts/_eggs" \
+        "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
 
-  # Install man page
-  install -Dm644 manpages/doc/man/eggs.1.gz -t "${pkgdir}/usr/share/man/man1/"
+    # Install man page
+    install -Dm644 manpages/doc/man/eggs.1.gz -t "${pkgdir}/usr/share/man/man1/"
 
-  # Install desktop file
-  install -Dm644 "assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    # Install desktop file
+    install -Dm644 "assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
-  # Install icon
-  install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
+    # Install icon
+    install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
+
+#check() {
+	# uncomment the 2 lines below if there is a testsuite.  we assume the testsuite
+	# is run using "make check", which is the default for autotools-based build systems.
+	# cd "$builddir"
+	# make check
+#}
