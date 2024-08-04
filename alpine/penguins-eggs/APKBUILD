@@ -30,14 +30,12 @@ depends="
     squashfs-tools 
     sshfs 
     xorriso "
-
 optdepends=" bash-completion 
             zsh-completions "
 makedepends=" git
             npm "
 options='!strip'
-#source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
-source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit} penguins-eggs"
+source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
 sha256sums='SKIP'
 
 pkgver() {
