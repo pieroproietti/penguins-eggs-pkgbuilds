@@ -1,5 +1,6 @@
 # Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
+_commit=4715726dd6f866b9740323243b8ffb89a1f5bebf
 pkgname=penguins-eggs
 pkgver=10.0.20
 pkgrel=1
@@ -35,7 +36,6 @@ makedepends="$depends_dev"
 #subpackages="$pkgname-dev $pkgname-doc"
 #source="https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
 source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
-sha256sums='SKIP'
 
 builddir="$srcdir"/$pkgname-$pkgver
 
@@ -104,10 +104,3 @@ package() {
     # Install icon
     install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
-
-#check() {
-	# uncomment the 2 lines below if there is a testsuite.  we assume the testsuite
-	# is run using "make check", which is the default for autotools-based build systems.
-	# cd "$builddir"
-	# make check
-#}
