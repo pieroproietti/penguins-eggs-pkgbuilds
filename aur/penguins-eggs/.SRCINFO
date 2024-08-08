@@ -6,12 +6,10 @@ pkgbase = penguins-eggs
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = pnpm
 	depends = arch-install-scripts
 	depends = dosfstools
 	depends = erofs-utils
 	depends = findutils
-	depends = git
 	depends = grub
 	depends = jq
 	depends = libarchive
@@ -33,11 +31,12 @@ pkgbase = penguins-eggs
 	depends = sshfs
 	depends = syslinux
 	depends = xdg-utils
+	depends = bash-completion
 	optdepends = bash-completion: eggs autocomplete
-	optdepends = zsh-completions: eggs autocomplete
 	optdepends = calamares: system installer GUI
+	optdepends = zsh-completions: eggs autocomplete
 	options = !strip
-	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=03b146cd097e23f72b8a290ffeff1434ec68a0a0
+	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=f861459a62f2e3bdd5b50aeb5d25523976d8f335
 	sha256sums = SKIP
 
 pkgname = penguins-eggs
