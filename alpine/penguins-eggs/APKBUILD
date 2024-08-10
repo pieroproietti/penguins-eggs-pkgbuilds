@@ -1,7 +1,7 @@
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
 # Contributor: 
 pkgname=penguins-eggs
-pkgver=test
+pkgver=v10.0.25
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -31,7 +31,7 @@ depends="
     xorriso "
 depends_dev=" git pnpm "
 makedepends="$depends_dev"
-source="https://github.com/pieroproietti/penguins-eggs/archive/penguins-eggs-v$pkgver.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$pkgver.tar.gz"
 
 prepare() {
 	cd "$builddir"
@@ -88,3 +88,7 @@ package() {
     # Install icon
     install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
+
+sha512sums="
+110fdb2ffe1dfbe7c5c35419356899214a51960f846e79032fff8d7e59a38f23528ed2c44f3311fa58101f99e6b7e02bec53b117e9697c38cb013248ebfc85b0  v10.0.25.tar.gz
+"
