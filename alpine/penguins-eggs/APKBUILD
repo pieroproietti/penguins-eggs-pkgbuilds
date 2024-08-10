@@ -1,13 +1,12 @@
-# Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
-_commit=4715726dd6f866b9740323243b8ffb89a1f5bebf
+# Contributor: 
 pkgname=penguins-eggs
-pkgver=10.0.20
-pkgrel=1
+pkgver=10.0.24
+pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="all"
-license="GPL"
+license="GPL-3.0-or-later"
 depends="
     alpine-conf 
     apk-tools 
@@ -30,36 +29,20 @@ depends="
     squashfs-tools 
     sshfs 
     xorriso "
-depends_dev=" git npm "
+depends_dev=" git pnpm "
 makedepends="$depends_dev"
-#install=
-#subpackages="$pkgname-dev $pkgname-doc"
-#source="https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-source="git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
-
-builddir="$srcdir"/$pkgname-$pkgver
+source="https://github.com/pieroproietti/penguins-eggs/archive/penguins-eggs-v$pkgver.tar.gz"
 
 prepare() {
 	cd "$builddir"
 }
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
-}
-
 build() {
-    cd "${srcdir}/${pkgname}"
-    npm set prefix "pnpm-dir"
-    npm install -g pnpm
-    
-    pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
-    pnpm-dir/bin/pnpm install
-    pnpm-dir/bin/pnpm build
+    pnpm install
+    pnpm build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
     install -Dm644 .oclif.manifest.json package.json -t "${pkgdir}/usr/lib/${pkgname}/"
     cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
         "${pkgdir}/usr/lib/${pkgname}/"
@@ -76,9 +59,10 @@ package() {
     mv "${tmppackage}" "${pkgjson}"
     chmod 644 "${pkgjson}"
 
-    # Fix paths for node modules
-    find node_modules -type f -print0 | xargs --null sed -i \
-        "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
+    # Fix paths for node modules changed
+    find node_modules -type f -exec sed -i \
+    "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#" {}
+
 
     # Install documentation
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"

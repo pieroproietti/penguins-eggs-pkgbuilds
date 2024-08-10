@@ -1,12 +1,14 @@
 # APKBUILD penguins-eggs
 
-Install alpine-sdk
-```
-doas apk add alpine-sdk
-```
+# install alpine-sdk
+apk add alpine-sdk
 
-# configurazione
-/etc/abuild.conf
+# user executing abuild member of the abuild group.
+
+adduser artisan abuild
+
+# Creazione chiavi
+abuild-keygen -a -i
 
 abuild Commands:
 * `build`       Compile and install package into $pkgdir
@@ -32,8 +34,6 @@ abuild Commands:
 * `unpack`      Unpack sources to $srcdir
 * `up2date`     Compare target and sources dates
 * `verify`      Verify checksums
-
-
 
 
 ```
