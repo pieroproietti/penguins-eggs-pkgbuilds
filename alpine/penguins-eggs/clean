@@ -1,0 +1,3 @@
+#!/bin/ash
+doas rm /var/cache/distfiles/penguins-eggs-*
+rm ~/packages -rf
