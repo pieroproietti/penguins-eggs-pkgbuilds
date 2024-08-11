@@ -1,5 +1,5 @@
+# Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
-# Contributor:
 pkgname=penguins-eggs
 pkgver=10.0.25
 pkgrel=0
@@ -15,8 +15,6 @@ depends="
 	curl
 	dosfstools
 	fuse
-	git
-	jq
 	lsblk
 	lsb-release
 	lvm2
@@ -29,14 +27,14 @@ depends="
 	squashfs-tools
 	sshfs
 	xorriso"
-#depends_dev=" git pnpm "
-makedepends=" git pnpm "
-# rename
-source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$pkgver.tar.gz"
-
-prepare() {
-	cd "$builddir"
-}
+makedepends="
+	git
+	jq
+	pnpm
+	"
+subpackages="$pkgname-bash-completion $pkgname-doc"
+source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+options="!check net" # No tests
 
 build() {
 	pnpm install
@@ -44,7 +42,8 @@ build() {
 }
 
 package() {
-	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/usr/lib/$pkgname/"
+	install -Dm644 .oclif.manifest.json package.json \
+		-t "$pkgdir/usr/lib/$pkgname/"
 	cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
 		"$pkgdir/usr/lib/$pkgname/"
 
@@ -62,37 +61,38 @@ package() {
 	chmod 644 "$pkgjson"
 
 	# Fix paths for node modules
-  	find node_modules -type f -print0 | xargs -0 sed -i \
-	"s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#"
+	find node_modules -type f \
+			-exec sed -i "s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#" {} ';'
 
 	# Install documentation
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
 	# Symlink executable
-	install -d "$pkgdir/usr/bin"
-	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir/usr/bin/eggs"
+	install -d "$pkgdir"/usr/bin
+	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir"/usr/bin/eggs
 
-	# Install shell completion files
-	install -d "$pkgdir/usr/share/bash-completion/completions"
+	# Install bash completion files
+	install -d "$pkgdir"/usr/share/bash-completion/completions
+	#mkdir "$pkgdir"/usr/share/bash-completion/completions/
 	mv "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
-		"$pkgdir/usr/share/bash-completion/completions/"
-	install -d "$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
+		"$pkgdir"/usr/share/bash-completion/completions/
+
+	# Install Zsh completion files
+	install -d "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
+	#mkdir "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 	mv "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
-		"$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
+		"$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 
 	# Install man page
-	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir"/usr/share/man/man1/
 
 	# Install desktop file
-	install -Dm644 "assets/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 "assets/$pkgname.desktop" \
+		-t "$pkgdir"/usr/share/applications/
 
 	# Install icon
-	install -Dm644 assets/eggs.png -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 }
-
-
-
-options="!check" 
 
 sha512sums="
 110fdb2ffe1dfbe7c5c35419356899214a51960f846e79032fff8d7e59a38f23528ed2c44f3311fa58101f99e6b7e02bec53b117e9697c38cb013248ebfc85b0  penguins-eggs-10.0.25.tar.gz

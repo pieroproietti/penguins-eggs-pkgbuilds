@@ -7,8 +7,17 @@ apk add alpine-sdk
 
 adduser artisan abuild
 
-# Creazione chiavi
-abuild-keygen -a -i
+# create keys
+```
+abuild-keygen -n
+```
+Insert on `~/.abuild/abuild.conf`:
+```
+PACKAGER_PRIVKEY="/home/artisan/.abuild/piero.proietti@gmail.com-66b8815d.rsa"
+```
+copy `piero.proietti@gmail.com-66b8815d.rsa.pub` on `/etc/apk/keys`.
+
+
 
 abuild Commands:
 * `build`       Compile and install package into $pkgdir
