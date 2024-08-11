@@ -29,8 +29,8 @@ depends="
 	squashfs-tools
 	sshfs
 	xorriso"
-depends_dev=" git pnpm "
-makedepends="$depends_dev"
+#depends_dev=" git pnpm "
+makedepends=" git pnpm "
 # rename
 source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$pkgver.tar.gz"
 
@@ -89,6 +89,8 @@ package() {
 	# Install icon
 	install -Dm644 assets/eggs.png -t "$pkgdir/usr/share/pixmaps/"
 }
+
+
 
 options="!check" 
 
