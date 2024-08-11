@@ -1,7 +1,7 @@
 # Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
 pkgname=penguins-eggs
-pkgver=10.0.26
+pkgver=v10.0.26
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -73,13 +73,11 @@ package() {
 
 	# Install bash completion files
 	install -d "$pkgdir"/usr/share/bash-completion/completions
-	#mkdir "$pkgdir"/usr/share/bash-completion/completions/
 	mv "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
 		"$pkgdir"/usr/share/bash-completion/completions/
 
 	# Install Zsh completion files
 	install -d "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
-	#mkdir "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 	mv "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
 		"$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 
