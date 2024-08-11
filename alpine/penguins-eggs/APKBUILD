@@ -1,94 +1,97 @@
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
-# Contributor: 
+# Contributor:
 pkgname=penguins-eggs
-pkgver=v10.0.25
+pkgver=10.0.25
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
-arch="all"
+arch="x86_64 x86"
 license="GPL-3.0-or-later"
 depends="
-    alpine-conf 
-    apk-tools 
-    bash-completion 
-    cryptsetup 
-    curl 
-    dosfstools 
-    fuse 
-    git 
-    jq 
-    lsblk 
-    lsb-release 
-    lvm2 
-    mkinitfs 
-    nodejs 
-    npm 
-    parted 
-    rsync 
-    syslinux 
-    squashfs-tools 
-    sshfs 
-    xorriso "
+	alpine-conf
+	apk-tools
+	bash-completion
+	cryptsetup
+	curl
+	dosfstools
+	fuse
+	git
+	jq
+	lsblk
+	lsb-release
+	lvm2
+	mkinitfs
+	nodejs
+	npm
+	parted
+	rsync
+	syslinux
+	squashfs-tools
+	sshfs
+	xorriso"
 depends_dev=" git pnpm "
 makedepends="$depends_dev"
-source="https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$pkgver.tar.gz"
+# rename
+source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$pkgver.tar.gz"
 
 prepare() {
 	cd "$builddir"
 }
 
 build() {
-    pnpm install
-    pnpm build
+	pnpm install
+	pnpm build
 }
 
 package() {
-    install -Dm644 .oclif.manifest.json package.json -t "${pkgdir}/usr/lib/${pkgname}/"
-    cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
-        "${pkgdir}/usr/lib/${pkgname}/"
+	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/usr/lib/$pkgname/"
+	cp -r addons assets bin conf ipxe dist mkinitcpio node_modules scripts \
+		"$pkgdir/usr/lib/$pkgname/"
 
-    # Fix permissions
-    chown root:root "${pkgdir}/usr/lib/${pkgname}/"{dist,node_modules}
+	# Fix permissions
+	chown root:root "$pkgdir/usr/lib/$pkgname/dist"
+	chown root:root "$pkgdir/usr/lib/$pkgname/node_modules"
 
-    # Package contains reference to $srcdir
-    find "${pkgdir}/usr/lib/${pkgname}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	# Package contains reference to $srcdir
+	find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-    local tmppackage="$(mktemp)"
-    local pkgjson="${pkgdir}/usr/lib/${pkgname}/package.json"
-    jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
-    mv "${tmppackage}" "${pkgjson}"
-    chmod 644 "${pkgjson}"
+	local tmppackage="$(mktemp)"
+	local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
+	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+	mv "$tmppackage" "$pkgjson"
+	chmod 644 "$pkgjson"
 
-    # Fix paths for node modules changed
-    find node_modules -type f -exec sed -i \
-    "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#" {}
+	# Fix paths for node modules
+  	find node_modules -type f -print0 | xargs -0 sed -i \
+	"s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#"
 
+	# Install documentation
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-    # Install documentation
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	# Symlink executable
+	install -d "$pkgdir/usr/bin"
+	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir/usr/bin/eggs"
 
-    # Symlink executable
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${pkgname}/bin/run.js" "${pkgdir}/usr/bin/eggs"
+	# Install shell completion files
+	install -d "$pkgdir/usr/share/bash-completion/completions"
+	mv "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
+		"$pkgdir/usr/share/bash-completion/completions/"
+	install -d "$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
+	mv "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
+		"$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
 
-    # Install shell completion files
-    install -d "${pkgdir}/usr/share/bash-completion/completions"
-    mv "${pkgdir}/usr/lib/${pkgname}/scripts/eggs.bash" \
-        "${pkgdir}/usr/share/bash-completion/completions/"
-    install -d "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
-    mv "${pkgdir}/usr/lib/${pkgname}/scripts/_eggs" \
-        "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/"
+	# Install man page
+	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir/usr/share/man/man1/"
 
-    # Install man page
-    install -Dm644 manpages/doc/man/eggs.1.gz -t "${pkgdir}/usr/share/man/man1/"
+	# Install desktop file
+	install -Dm644 "assets/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
-    # Install desktop file
-    install -Dm644 "assets/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-
-    # Install icon
-    install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
+	# Install icon
+	install -Dm644 assets/eggs.png -t "$pkgdir/usr/share/pixmaps/"
 }
 
+options="!check" 
+
 sha512sums="
-110fdb2ffe1dfbe7c5c35419356899214a51960f846e79032fff8d7e59a38f23528ed2c44f3311fa58101f99e6b7e02bec53b117e9697c38cb013248ebfc85b0  v10.0.25.tar.gz
+110fdb2ffe1dfbe7c5c35419356899214a51960f846e79032fff8d7e59a38f23528ed2c44f3311fa58101f99e6b7e02bec53b117e9697c38cb013248ebfc85b0  penguins-eggs-10.0.25.tar.gz
 "
