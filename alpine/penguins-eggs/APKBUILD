@@ -34,11 +34,16 @@ makedepends="
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+#source="${pkgname}-${pkgver}.tar.gz::https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
 options="!check net" # No tests
 
 build() {
 	pnpm install
 	pnpm build
+}
+
+pkgver() {
+  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
 }
 
 package() {
@@ -93,5 +98,5 @@ package() {
 }
 
 sha512sums="
-9c27f2f68180042ec6606baa224d21d67ee81d0ad2cd849a75509ff3f13b6d5fb4afc3e6d292a370d7755da71b2e31ec4cc67a7624bbb7612e5fa53a5abd808f  penguins-eggs-10.0.25.tar.gz
+9c27f2f68180042ec6606baa224d21d67ee81d0ad2cd849a75509ff3f13b6d5fb4afc3e6d292a370d7755da71b2e31ec4cc67a7624bbb7612e5fa53a5abd808f  penguins-eggs-v10.0.25.tar.gz
 "
