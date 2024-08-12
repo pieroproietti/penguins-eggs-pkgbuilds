@@ -34,7 +34,7 @@ makedepends="
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
-#source="${pkgname}-${pkgver}.tar.gz::https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}"
+#source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
 options="!check net" # No tests
 
 build() {
@@ -43,7 +43,7 @@ build() {
 }
 
 pkgver() {
-  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
+	grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
 }
 
 package() {
