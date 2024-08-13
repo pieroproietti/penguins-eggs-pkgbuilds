@@ -3,6 +3,3 @@ doas rm /var/cache/distfiles/penguins-eggs*
 rm ~/packages -rf
 rm src -rf
 rm pkg -rf
-abuild fetch
-abuild checksum
-abuild 
