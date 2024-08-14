@@ -2,7 +2,7 @@
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
 pkgname=penguins-eggs
 pkgver=10.0.26
-pkgrel=0
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="x86_64 x86"
@@ -98,6 +98,34 @@ package() {
 
 	# Install icon
 	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
+
+	# adapt
+	if [ -f "/usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt" ]; then
+		install /usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt /usr/bin
+	fi
+
+	# love
+	if [ -f "/usr/lib/penguins-eggs/scripts/love" ]; then
+		install /usr/lib/penguins-eggs/scripts/love /usr/bin
+	fi
+
+	# resy
+	if [ -f "/usr/lib/penguins-eggs/scripts/resy" ]; then
+		install /usr/lib/penguins-eggs/scripts/resy /usr/sbin
+	fi
+
+	# revitalize mom
+	if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then
+		chmod +x /usr/lib/penguins-eggs/scripts/mom.sh
+	fi
+
+	# revitalize eui
+	if [ -d "/usr/lib/penguins-eggs/eui" ]; then
+		chmod +x /usr/lib/penguins-eggs/eui/eui-create-image.sh
+		chmod +x /usr/lib/penguins-eggs/eui/eui-start.sh
+		chmod 0400 /usr/lib/penguins-eggs/eui/eui-users
+	fi
+
 }
 
 sha512sums="
