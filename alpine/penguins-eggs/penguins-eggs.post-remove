@@ -1,0 +1,34 @@
+#!/bin/sh
+# post-remove script for penguins-eggs_10.x
+#
+
+set -e
+
+# remove eggs configuration
+rm -rf /etc/penguins-eggs.d/
+
+# remove calamares configuration
+rm -rf /etc/calamares/
+
+# remove various scripts
+rm -f /usr/bin/adapt
+rm -f /usr/bin/love
+rm -f /usr/sbin/resy
+
+# sanitize /usr/lib/penguins-eggs/
+rm -rf /usr/lib/penguins-eggs/
+
+# sanitize applications links
+rm -f /usr/share/applications/penguins-adapt.desktop
+rm -f /usr/share/applications/penguins-clinstaller.desktop
+rm -f /usr/share/applications/penguins-eggs.desktop
+
+# sanitize xdg links
+rm -f /etc/xdg/autostart/penguins-links-add.desktop
+rm -f /usr/bin/penguins-links-add.sh
+
+# sanitize penguins-eggs multiarch (krill modules)
+rm -rf /usr/lib/i386-linux-gnu/penguins-eggs/
+rm -rf /usr/lib/x86_64-linux-gnu/penguins-eggs/
+
+exit 0

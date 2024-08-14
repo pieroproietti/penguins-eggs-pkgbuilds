@@ -35,6 +35,9 @@ makedepends="
 subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 #source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
+install="$pkgname.post-install"
+remove="$pkgname.post-remove"
+
 options="!check net" # No tests
 
 build() {
