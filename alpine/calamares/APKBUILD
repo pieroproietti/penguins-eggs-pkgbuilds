@@ -31,8 +31,8 @@ makedepends="$depends_dev
 	kwidgetsaddons-dev
 	libatasmart-dev
 	libpwquality-dev
-	plasma-framework-dev
-	polkit-qt-1-dev
+	plasma-framework5-dev
+	polkit-qt-dev
 	qt5-qtbase-dev
 	qt5-qtdeclarative-dev
 	qt5-qtsvg-dev
