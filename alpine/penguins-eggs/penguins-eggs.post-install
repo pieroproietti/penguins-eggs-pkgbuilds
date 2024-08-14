@@ -21,7 +21,7 @@ fi
 
 # revitalize mom
 if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then  
-    chmod +x /usr/lib/penguins-eggs/scripts/mom.sh
+    #chmdod +x /usr/lib/penguins-eggs/scripts/mom.sh
 fi
 
 eggs config --nointeractive

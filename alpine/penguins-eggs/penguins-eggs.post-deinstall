@@ -1,5 +1,5 @@
 #!/bin/sh
-# post-remove script for penguins-eggs_10.x
+# post-deinsall script for penguins-eggs_10.x
 #
 
 set -e
