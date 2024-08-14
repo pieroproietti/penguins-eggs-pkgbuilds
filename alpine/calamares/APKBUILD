@@ -1,8 +1,8 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=calamares
-pkgver=3.2.61
-pkgrel=1
+pkgver=3.3.9
+pkgrel=0
 # armhf blocked by qt5-qtdeclarative
 # ppc64le, s390x, and riscv64 blocked by qt5-qtwebengine
 arch="all !armhf !ppc64le !s390x !riscv64"
@@ -17,7 +17,7 @@ depends="
 depends_dev="
 	extra-cmake-modules
 	kcoreaddons-dev
-	qt5-qttools-dev
+	qt6-qttools-dev
 	yaml-cpp-dev
 	"
 makedepends="$depends_dev
@@ -33,10 +33,10 @@ makedepends="$depends_dev
 	libpwquality-dev
 	plasma-framework5-dev
 	polkit-qt-dev
-	qt5-qtbase-dev
-	qt5-qtdeclarative-dev
-	qt5-qtsvg-dev
-	qt5-qtwebengine-dev
+	qt6-qtbase-dev
+	qt6-qtdeclarative-dev
+	qt6-qtsvg-dev
+	qt6-qtwebengine-dev
 	"
 # required for several modules
 makedepends="$makedepends
@@ -185,6 +185,6 @@ package() {
 }
 
 sha512sums="
-04292f1ef9ee478dfb6cc044471f5fd6ac6e64b40e80b730cb7d38dc7ed56bae4e3a40ea483e9167502896e4ce190cecf7acea98394f1de22139912a84b937ab  calamares-3.2.61.tar.gz
+69a02c89dfa74d349c55880b0d4c33c601328747faa1671c2708205460d7c461cb9c911a44fa19992b5d834ee7b721579f5d8f1f619a5dc27a41741f97f623c1  calamares-3.3.9.tar.gz
 c56ad3b92901abdb41cffaeceeff9a6c8dae3882aacf9a4b654a8898f1e26eeadda3ac3ac799b127b176cc31d397652f27a07bcdfbf7f4ede3c6826d08f7bd7d  modules-load.conf
 "
