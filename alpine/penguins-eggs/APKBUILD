@@ -101,7 +101,7 @@ package() {
 
 	# link to adapt
 	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt \
-		"$pkgdir"/usr/bin/adapt 
+		"$pkgdir"/usr/bin/adapt
 
 	# link to love
 	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/scripts/love \
