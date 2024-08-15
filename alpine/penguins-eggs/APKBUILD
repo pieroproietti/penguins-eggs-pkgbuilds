@@ -2,7 +2,7 @@
 # Maintainer: Piero Proietti <piero.proietti@gmail.com>
 pkgname=penguins-eggs
 pkgver=10.0.26
-pkgrel=2
+pkgrel=3
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="x86_64 x86"
@@ -99,20 +99,13 @@ package() {
 	# Install icon
 	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
-	# adapt
-	if [ -f "/usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt" ]; then
-		install /usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt /usr/bin
-	fi
+	# link to adapt
+	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt \
+		"$pkgdir"/usr/bin/adapt 
 
-	# love
-	if [ -f "/usr/lib/penguins-eggs/scripts/love" ]; then
-		install /usr/lib/penguins-eggs/scripts/love /usr/bin
-	fi
-
-	# resy
-	if [ -f "/usr/lib/penguins-eggs/scripts/resy" ]; then
-		install /usr/lib/penguins-eggs/scripts/resy /usr/sbin
-	fi
+	# link to love
+	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/scripts/love \
+		"$pkgdir"/usr/bin/love
 
 	# revitalize mom
 	if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then
@@ -129,5 +122,5 @@ package() {
 }
 
 sha512sums="
-d1c56b9ce0796fc9838b9f50202e0a54ec2eb65c3dce3ea4a39f61a465f11e5a4bd55adb782d20d240608ecaceaa76ccfbcad3e3e03d60b235eb2f7a011296ee  penguins-eggs-10.0.26.tar.gz
+6b38108ef44065bcdbc791fe9a6989f0f2cae54652fb3fb5deb4f5fbaca722372ba97d5abafe3c24f6ada9f46d777cb1bfbdc456f17b66953d90b0c2caab70e8  penguins-eggs-10.0.26.tar.gz
 "
