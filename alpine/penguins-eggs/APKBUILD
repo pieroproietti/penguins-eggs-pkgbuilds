@@ -22,7 +22,6 @@ depends="
 	jq
 	mkinitfs
 	nodejs
-	npm
 	parted
 	rsync
 	syslinux
