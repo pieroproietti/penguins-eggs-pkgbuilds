@@ -53,18 +53,18 @@ source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir"/"$pkgname"
 	grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir"/"$pkgname"
 	pnpm install
 	pnpm build  
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir"/"$pkgname"
 	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
 	cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts \
 		"$pkgdir/"usr/lib/"$pkgname/"
@@ -84,7 +84,7 @@ package() {
 		"$pkgdir/"usr/share/bash-completion/completions/
 
 	# Install zsh-completion files
-	install -d "$pkgdir/"usr/share/zsh/functions/Completion/Zsh/"
+	install -d "$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
 	ln -s "$pkgdir"/usr/lib/"$pkgname/"scripts/_eggs \
 		"$pkgdir/"usr/share/zsh/functions/Completion/Zsh/
 
@@ -114,5 +114,4 @@ package() {
 
 	# Symlink to love
 	ln -s "$pkgdir/"usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
-
 }
