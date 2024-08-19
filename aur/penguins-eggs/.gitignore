@@ -6,3 +6,6 @@
 !.SRCINFO
 !export.sh
 !PKGBUILD
+!.c
+!.e
+!.m
