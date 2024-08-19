@@ -107,11 +107,11 @@ package() {
 
 	# Symlink executable
 	install -d "$pkgdir/"usr/bin
-	ln -s "$pkgdir/"usr/lib/"$pkgname/"bin/run.js "$pkgdir/"usr/bin/eggs
+	ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
 
 	# Symlink to adapt
-	ln -s "$pkgdir/"usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
+	ln -s usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
 
 	# Symlink to love
-	ln -s "$pkgdir/"usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
+	ln -s usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
 }
