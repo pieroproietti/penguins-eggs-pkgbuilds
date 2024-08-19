@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=10.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="x86_64 x86"
@@ -97,16 +97,6 @@ package() {
 	# Install icon
 	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
-	# Symlink to adapt
-	ln -s /usr/bin/adapt "$pkgdir"/usr/lib/"$pkdname"/addons/eggs/adapt/bin/adapt
-
-	# Symlink to love
-	ln -s /usr/bin/love "$pkgdir"/usr/lib/penguins-eggs/scripts/love
-
-	# Symlink executable
-	install -d "$pkgdir"/usr/bin
-	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir"/usr/bin/eggs
-
 	# revitalize mom
 	if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then
 		chmod +x /usr/lib/penguins-eggs/scripts/mom.sh
@@ -119,8 +109,18 @@ package() {
 		chmod 0400 /usr/lib/penguins-eggs/eui/eui-users
 	fi
 
+	# Symlink executable
+	install -d "$pkgdir/"usr/bin
+	ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
+
+	# Symlink to adapt
+	ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
+
+	# Symlink to love
+	ln -s /usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
+
 }
 
 sha512sums="
-f50c5eb88e7c1feb50ff88cb5a38842272d3a5c41ea522e656f14ac2ff67184453ebc64c47edf24b51beeebf6ec48b152fb9f689ad00f02296dc17caa60931a6  penguins-eggs-10.0.28.tar.gz
+eed04a0c7cb4cd15e586d627c2828384235256dc60af3b84c03231435232d54957633ed6e20f7793b3e529b5d7a031f47e032b6b58e620a0f43addc62fa739d1  penguins-eggs-10.0.28.tar.gz
 "
