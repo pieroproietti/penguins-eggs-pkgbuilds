@@ -5,7 +5,7 @@
 _commit=fd3c9a5ea6ca44508af380b2753fc8889e161374
 pkgname=penguins-eggs
 pkgver=10.0.28
-pkgrel=2
+pkgrel=3
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -15,6 +15,7 @@ depends=(
 		'dosfstools'
 		'erofs-utils'
 		'findutils' 
+		'git'
 		'grub'
 		'jq'
 		'libarchive'
@@ -44,7 +45,6 @@ optdepends=(
 			'zsh-completions: eggs autocomplete'
 		)
 makedepends=(
-		'git'
 		'pnpm'
 	)
 
