@@ -1,5 +1,8 @@
-# Contributor: Piero Proietti <piero.proietti@gmail.com>
-# Maintainer: Piero Proietti <piero.proietti@gmail.com>
+# Alpine
+#
+# mantainer: Piero Proietti <piero.proietti@gmail.com>
+# contributor: Piero Proietti <piero.proietti@gmail.com>
+
 pkgname=penguins-eggs
 pkgver=10.0.28
 pkgrel=1
@@ -33,7 +36,7 @@ makedepends="
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
-#source="$pkgname-$pkgver.tar.gz::https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
+
 install="$pkgname.post-install $pkgname.post-deinstall"
 
 
@@ -49,34 +52,30 @@ pkgver() {
 }
 
 package() {
+	# no need cd ...
 	install -Dm644 .oclif.manifest.json package.json \
 		-t "$pkgdir/usr/lib/$pkgname/"
 	cp -r addons assets bin conf ipxe dist dracut mkinitcpio mkinitfs node_modules scripts \
 		"$pkgdir/usr/lib/$pkgname/"
 
 	# Fix permissions
-	chown root:root "$pkgdir/usr/lib/$pkgname/dist"
-	chown root:root "$pkgdir/usr/lib/$pkgname/node_modules"
+	chown root:root "$pkgdir/usr/lib/$pkgname/"
 
 	# Package contains reference to $srcdir
 	find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-	local tmppackage="$(mktemp)"
-	local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
-	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-	mv "$tmppackage" "$pkgjson"
-	chmod 644 "$pkgjson"
+	#local tmppackage="$(mktemp)"
+	#local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
+	#jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+	#mv "$tmppackage" "$pkgjson"
+	#chmod 644 "$pkgjson"
 
 	# Fix paths for node modules
-	find node_modules -type f \
-			-exec sed -i "s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#" {} ';'
+	#find node_modules -type f \
+	#		-exec sed -i "s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#" {} ';'
 
 	# Install documentation
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-
-	# Symlink executable
-	install -d "$pkgdir"/usr/bin
-	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir"/usr/bin/eggs
 
 	# Install bash completion files
 	install -d "$pkgdir"/usr/share/bash-completion/completions
@@ -98,13 +97,15 @@ package() {
 	# Install icon
 	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
-	# link to adapt
-	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/addons/eggs/adapt/bin/adapt \
-		"$pkgdir"/usr/bin/adapt
+	# Symlink to adapt
+	ln -s /usr/bin/adapt "$pkgdir"/usr/lib/"$pkdname"/addons/eggs/adapt/bin/adapt
 
-	# link to love
-	install -Dm755 "$pkgdir"/usr/lib/penguins-eggs/scripts/love \
-		"$pkgdir"/usr/bin/love
+	# Symlink to love
+	ln -s /usr/bin/love "$pkgdir"/usr/lib/penguins-eggs/scripts/love
+
+	# Symlink executable
+	install -d "$pkgdir"/usr/bin
+	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir"/usr/bin/eggs
 
 	# revitalize mom
 	if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then
