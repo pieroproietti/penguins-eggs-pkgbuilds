@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=10.0.30
-pkgrel=0
+pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="x86_64 x86"
@@ -122,5 +122,5 @@ package() {
 }
 
 sha512sums="
-3ef2b46726959830643ca736bf463e2bb50a399f3cf7dc91a71fc4c2f45e86c587ebddab3e66facecb2f2319918537cf8794cc7245f2d2c3203bae9fffdefe3f  penguins-eggs-10.0.30.tar.gz
+5569f7aeb4754b7882c326246628518a894ad60c3c3c0e9dab364e3c8a4296be68f5b363a395db7fc13f6e16e7388efc82985e165acaba5dfb47936921d14dec  penguins-eggs-10.0.30.tar.gz
 "
