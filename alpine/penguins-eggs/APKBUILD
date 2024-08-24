@@ -4,7 +4,7 @@
 # contributor: Piero Proietti <piero.proietti@gmail.com>
 
 pkgname=penguins-eggs
-pkgver=10.0.30
+pkgver=10.0.31
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -36,6 +36,7 @@ makedepends="
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+
 
 install="$pkgname.post-install $pkgname.post-deinstall"
 
@@ -122,5 +123,5 @@ package() {
 }
 
 sha512sums="
-5569f7aeb4754b7882c326246628518a894ad60c3c3c0e9dab364e3c8a4296be68f5b363a395db7fc13f6e16e7388efc82985e165acaba5dfb47936921d14dec  penguins-eggs-10.0.30.tar.gz
+aaaf60f138a211231d37eed9596db5672c425557878c221fbc0153b9449e756545c909d025a1db105c84d599442ee50055bc03f20d1452582b1131bc4bc8fb66  penguins-eggs-10.0.31.tar.gz
 "
