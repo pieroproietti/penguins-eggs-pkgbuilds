@@ -49,3 +49,8 @@ git checkout master
 git merge --squash mine
 git commit -m 'testing/penguins-eggs: update to 10.0.31-1'
 ```
+
+Merge precedenti:
+* [1](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70432#note_427410)
+* [2](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70725)
+
