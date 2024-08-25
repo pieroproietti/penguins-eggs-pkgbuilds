@@ -61,3 +61,7 @@ Merge precedenti:
 * deleted [2](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70725)
 
 * active [3](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70933)
+
+# Rebase
+
+[merging vs rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
