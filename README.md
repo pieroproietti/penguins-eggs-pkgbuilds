@@ -13,21 +13,27 @@ eggs PKGBUILDs
 
 Creare un fork di [aports](https://gitlab.alpinelinux.org/alpine/aports) esempio: `https://gitlab.alpinelinux.org/pieroproietti/aports/`
 
+
 Quindi, clonare il proprio fork:
 
 ```
 git clone https://gitlab.alpinelinux.org/pieroproietti/aports/
 ```
 
-e crearsi direttamente un branch `mine`.
+e crearsi direttamente un branch `mine`:
+```
+git branch mine
+git checkout mine
+```
 
+Lavorare su mine ed inserire i commit con: ```git commit testing/penguins-eggs/*```.
 
 ## primo commit
 
 ```
 git checkout master
 git merge --squash mine
-git commit -m 'testing/penguins-eggs: new aport'
+git commit -m 'testing/penguins-eggs: new aport 10.0.31'
 ```
 
 ## commit successivi
@@ -37,7 +43,7 @@ Creare un branch `mine` ed aggiungere solo le variazioni per penguins-eggs: `git
 ```
 git checkout master
 git merge --squash mine
-git commit -m 'testing/penguins-eggs: update to 10.0.31-0'
+git commit -m 'testing/penguins-eggs: update to 10.0.31'
 ```
 
 ## Rebuilds
@@ -47,7 +53,7 @@ commento su master:
 ```
 git checkout master
 git merge --squash mine
-git commit -m 'testing/penguins-eggs: update to 10.0.31-1'
+git commit -m 'testing/penguins-eggs: rebuild to 10.0.31'
 ```
 
 Merge precedenti:
@@ -55,4 +61,3 @@ Merge precedenti:
 * deleted [2](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70725)
 
 * active [3](https://gitlab.alpinelinux.org/alpine/aports/-/merge_requests/70933)
-
