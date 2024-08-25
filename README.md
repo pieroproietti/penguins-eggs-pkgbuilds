@@ -9,20 +9,43 @@ eggs PKGBUILDs
 * [penguins-eggs](https://gitlab.manjaro.org/packages/community/penguins-eggs)
 
 
-# aports
+# Alpine Linux aports
 
-Per su [aports](https://gitlab.alpinelinux.org/alpine/aports)
+Creare un fork di [aports](https://gitlab.alpinelinux.org/alpine/aports) esempio: `https://gitlab.alpinelinux.org/pieroproietti/aports/`
+
+Quindi, clonare il proprio fork:
+
+```
+git clone https://gitlab.alpinelinux.org/pieroproietti/aports/
+```
+
+e crearsi direttamente un branch `mine`.
+
 
 ## primo commit
+
 ```
-testing/penguins-eggs: new aport
+git checkout master
+git merge --squash mine
+git commit -m 'testing/penguins-eggs: new aport'
 ```
 
 ## commit successivi
 
 Creare un branch `mine` ed aggiungere solo le variazioni per penguins-eggs: `git add testing/penguins-eggs/*`.
 
-
 ```
-git merge --squash newFeature && git commit -m 'testing/penguins-eggs: update 10.0.31';
+git checkout master
+git merge --squash mine
+git commit -m 'testing/penguins-eggs: update to 10.0.31-0'
+```
+
+## Rebuilds
+Only increasing the value of pkgrel by 1.
+
+commento su master:
+```
+git checkout master
+git merge --squash mine
+git commit -m 'testing/penguins-eggs: update to 10.0.31-1'
 ```
