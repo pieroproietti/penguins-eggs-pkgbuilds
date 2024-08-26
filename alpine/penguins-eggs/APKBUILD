@@ -1,7 +1,7 @@
 # Alpine
 #
-# mantainer: Piero Proietti <piero.proietti@gmail.com>
-# contributor: Piero Proietti <piero.proietti@gmail.com>
+# Mantainer: Piero Proietti <piero.proietti@gmail.com>
+# Contributor: Piero Proietti <piero.proietti@gmail.com>
 
 pkgname=penguins-eggs
 pkgver=10.0.31
@@ -32,6 +32,7 @@ depends="
 	sshfs
 	xorriso"
 makedepends="
+	npm
 	pnpm
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
@@ -48,10 +49,6 @@ build() {
 	pnpm build
 }
 
-pkgver() {
-	grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
-}
-
 package() {
 	# no need cd ...
 	install -Dm644 .oclif.manifest.json package.json \
@@ -64,16 +61,6 @@ package() {
 
 	# Package contains reference to $srcdir
 	find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-
-	#local tmppackage="$(mktemp)"
-	#local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
-	#jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-	#mv "$tmppackage" "$pkgjson"
-	#chmod 644 "$pkgjson"
-
-	# Fix paths for node modules
-	#find node_modules -type f \
-	#		-exec sed -i "s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#" {} ';'
 
 	# Install documentation
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
