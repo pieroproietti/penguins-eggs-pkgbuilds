@@ -36,13 +36,19 @@ makedepends="
 	pnpm
 	"
 subpackages="$pkgname-bash-completion $pkgname-doc"
+#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
 
 
 install="$pkgname.post-install $pkgname.post-deinstall"
 
-
 options="!check net" # No tests
+
+prepare() {
+	mv "$srcdir"/develop.tar.gz "$srcdir"/penguins-eggs-"$pkgver".tar.gz
+	mv "$srcdir"/penguins-eggs-develop/ "$srcdir"/penguins-eggs-"$pkgver"
+}
 
 build() {
 	pnpm install
@@ -110,5 +116,5 @@ package() {
 }
 
 sha512sums="
-f957205bc51c276c88695ab864a2ebe2534c8f9d2aca490050492fc4e13c1cd8d8a32733fe602ab6f427cdce354a9291e82f53e5db57651a62cd8a306787d8b3  penguins-eggs-10.0.31.tar.gz
+d28a039285cd4b584658ab4424f9d1fe712119890045bc199d3dd75badb7ac339a16477e25bda699982fc739ac2eddd9e573a5718d15f02e6133b21b22ee7912  develop.tar.gz
 "
