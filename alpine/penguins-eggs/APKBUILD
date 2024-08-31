@@ -38,8 +38,8 @@ makedepends="
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
 # swap from develop to release
-source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
-#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+#source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
 
 
@@ -120,5 +120,5 @@ package() {
 }
 
 sha512sums="
-ba703cf4e4d3c5343908e9cdc3a79ce411a1f8a1b47183fd8c0be0e7b657632b2da1939f51509836974dfc8e46058a0df134abbe995f6e8d2a542c53b66586ee  develop.tar.gz
+7e89ab173575d443deb928424d1cec89bc3403e56514248047c9a8737825733cc2a2144331251860a1ed18270d30f5967ff6e8407435189a2aba825db1c4b801  penguins-eggs-10.0.34.tar.gz
 "
