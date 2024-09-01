@@ -5,8 +5,8 @@
 
 _pkgname="calamares"
 pkgname="$_pkgname-eggs"
-_commit=80ef430185212b9312bf30ef4eba9890c7a9fcfe
-pkgver=3.3.8.r39.g80ef430
+_commit=""
+pkgver=3.3.9
 pkgrel=1
 pkgdesc="calamares-eggs: supply by penguins-eggs project"
 url="https://github.com/calamares/calamares"
@@ -52,13 +52,15 @@ backup=(
   #'usr/share/calamares/modules/unpackfs.conf'
 )
 
-_pkgsrc="$_pkgname"
-source=("git+https://github.com/calamares/calamares#commit=${_commit}")
+_pkgsrc="$_pkgname" # commit
+_pkgsrc="$_pkgname-$pkgver" # released
+
+#source=("git+https://github.com/calamares/calamares#commit=${_commit}")
+source=("https://github.com/calamares/calamares/releases/download/v$pkgver/calamares-$pkgver.tar.gz")
 sha256sums=(
   'SKIP'
 )
-
-pkgver() {
+_pkgver() {
   cd "$_pkgsrc"
 
   local _regex='^set\(CALAMARES_VERSION ([0-9]+\.[0-9]+\.[0-9]+([^0-9].*)?)\)\s*$'

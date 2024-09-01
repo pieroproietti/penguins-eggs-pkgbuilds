@@ -41,8 +41,6 @@ subpackages="$pkgname-bash-completion $pkgname-doc"
 #source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
-
-
 install="$pkgname.post-install $pkgname.post-deinstall"
 
 options="!check net" # No tests
