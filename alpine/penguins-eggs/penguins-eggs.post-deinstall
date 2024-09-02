@@ -5,6 +5,8 @@
 set -e
 
 # remove calamares configuration
-rm -rf /etc/calamares/
+#rm -rf /etc/calamares/
+echo "penguins-eggs was removed..." 
+
 
 exit 0

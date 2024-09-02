@@ -1,10 +1,10 @@
 # Alpine
 #
-# Mantainer: Piero Proietti <piero.proietti@gmail.com>
 # Contributor: Piero Proietti <piero.proietti@gmail.com>
+# Mantainer: Piero Proietti <piero.proietti@gmail.com>
 
 pkgname=penguins-eggs
-pkgver=10.0.34
+pkgver=10.0.35
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -38,8 +38,8 @@ makedepends="
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
 # swap from develop to release
-#source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
-source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
+#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
 install="$pkgname.post-install $pkgname.post-deinstall"
 
@@ -47,9 +47,9 @@ options="!check net" # No tests
 
 prepare() {
 	if [ -e $srcdir/develop.tar.gz ]; then
-		mv "$srcdir"/develop.tar.gz "$srcdir"/penguins-eggs-"$pkgver".tar.gz
 		mv "$srcdir"/penguins-eggs-develop/ "$srcdir"/penguins-eggs-"$pkgver"
 	fi
+	default_prepare
 }
 
 build() {
@@ -118,5 +118,5 @@ package() {
 }
 
 sha512sums="
-7e89ab173575d443deb928424d1cec89bc3403e56514248047c9a8737825733cc2a2144331251860a1ed18270d30f5967ff6e8407435189a2aba825db1c4b801  penguins-eggs-10.0.34.tar.gz
+fcd3509a8bd779f9715e8a0f45ed85872e0bdb3b63795e6d9b7d6fe4c0fe6926cf8e4099de11707aa0cdc2309fbfefb424a0ae9240b3a0fb6ae5acf04baa33d8  develop.tar.gz
 "
