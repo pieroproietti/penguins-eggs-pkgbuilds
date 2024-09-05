@@ -118,5 +118,5 @@ package() {
 }
 
 sha512sums="
-05669c8271d872a960e26ecebd48724c4a7f003ba0d15c1a14c84bb3b59a3b5798476d6d7b85a0c981c0cbfa5450e5e13abb9d6b2c94c9be92a5f4a7e1db53ae  penguins-eggs-10.0.35.tar.gz
+33b2740f2f754e00c127ab303dde404a39d6cbb660a994fe5eb4b2aec890882bdafab5b67e8061b94e1e4f310d8aa9fa1fae3f7a358e4086cdff6eee6be5f387  penguins-eggs-10.0.35.tar.gz
 "
