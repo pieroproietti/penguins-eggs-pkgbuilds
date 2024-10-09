@@ -41,24 +41,18 @@ subpackages="$pkgname-bash-completion $pkgname-doc"
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
 
-install="$pkgname.post-install $pkgname.post-deinstall"
+# install="$pkgname.post-install $pkgname.post-deinstall"
 
 options="!check net" # No tests
 
-prepare() {
-	if [ -e $srcdir/develop.tar.gz ]; then
-		mv "$srcdir"/penguins-eggs-develop/ "$srcdir"/penguins-eggs-"$pkgver"
-	fi
-	default_prepare
-}
-
+# for develop release
+#builddir="$srcdir"/penguins-eggs-develop
 build() {
 	pnpm install
 	pnpm build
 }
 
 package() {
-	# no need cd ...
 	install -Dm644 .oclif.manifest.json package.json \
 		-t "$pkgdir/usr/lib/$pkgname/"
 	cp -r addons assets bin conf ipxe dist dracut mkinitcpio mkinitfs node_modules scripts \
@@ -94,29 +88,15 @@ package() {
 	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
 	# revitalize mom
-	if [ -f "/usr/lib/penguins-eggs/scripts/mom.sh" ]; then
-		chmod +x /usr/lib/penguins-eggs/scripts/mom.sh
-	fi
+	chmod +x "$pkgdir"/usr/lib/penguins-eggs/scripts/mom.sh
 
-	# revitalize eui
-	if [ -d "/usr/lib/penguins-eggs/eui" ]; then
-		chmod +x /usr/lib/penguins-eggs/eui/eui-create-image.sh
-		chmod +x /usr/lib/penguins-eggs/eui/eui-start.sh
-		chmod 0400 /usr/lib/penguins-eggs/eui/eui-users
-	fi
 
 	# Symlink executable
 	install -d "$pkgdir/"usr/bin
 	ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
 
-	# Symlink to adapt
-	ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
-
-	# Symlink to love
-	ln -s /usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
-
 }
 
 sha512sums="
-ca94357f147a993ebb0a7876a5ee041cdcb4fdc7c93ff9d2250276fee93ffd2fa1bf27547f6628c7b903bea0a6d5c51ed555535c7d49ca28d01cb7412261814e  penguins-eggs-10.0.42.tar.gz
+dd41d6e3a46ee60c3a1fed6b2fe1a47e5485ea08c06881be98a06030804e7e2f8787ebb3fb04390b00c8f08c4d15251bc0d6c68c56672740b67e95ef9e2e58a3  penguins-eggs-10.0.42.tar.gz
 "
