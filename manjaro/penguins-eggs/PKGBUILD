@@ -68,8 +68,20 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/usr/lib/$pkgname/"
-  cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts syslinux\
-    "$pkgdir/usr/lib/$pkgname/"
+  cp -r addons \
+        assets \
+        bin \
+        conf \
+        ipxe \
+        dracut \
+        dist \
+        eui \
+        mkinitcpio \
+        mkinitfs \
+        node_modules \
+        scripts \
+        syslinux\
+        "$pkgdir/usr/lib/$pkgname/"
 
   # Fix permissions
   chown root:root "$pkgdir/usr/lib/$pkgname/"{dist,node_modules}
@@ -77,11 +89,11 @@ package() {
   # Package contains reference to $srcdir
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-  local tmppackage="$(mktemp)"
-  local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
-  mv "${tmppackage}" "${pkgjson}"
-  chmod 644 "${pkgjson}"
+  #local tmppackage="$(mktemp)"
+  #local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
+  #jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
+  #mv "${tmppackage}" "${pkgjson}"
+  #chmod 644 "${pkgjson}"
 
   # Fix paths for node modules
   #find node_modules -type f -print0 | xargs --null sed -i \
