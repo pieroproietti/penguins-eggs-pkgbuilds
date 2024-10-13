@@ -4,6 +4,7 @@
 # Contributor: Muflone https://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
+source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 pkgname=penguins-eggs
 pkgver=10.0.42
 pkgrel=3
@@ -48,7 +49,6 @@ optdepends=(
   'zsh-completions: eggs autocomplete'
 )
 options=('!strip')
-_commit=f000a83d2492fa6220b999d6923ffb1272bfbff4
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 #sha256sums=('5c902d733c7522803d26f770f6ccc92b4da98b54569f42b0b7e124af59fe8685')
 sha256sums=('SKIP')
@@ -80,7 +80,7 @@ package() {
         mkinitfs \
         node_modules \
         scripts \
-        syslinux\
+        syslinux \
         "$pkgdir/usr/lib/$pkgname/"
 
   # Fix permissions
