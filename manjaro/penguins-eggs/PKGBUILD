@@ -48,9 +48,11 @@ optdepends=(
   'zsh-completions: eggs autocomplete'
 )
 options=('!strip')
-_commit=73cd53b7ff437e6f1f7b53a19dd93ec1ef47f8b2 # v10.0.42
+_commit=f000a83d2492fa6220b999d6923ffb1272bfbff4
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
-sha256sums=('5c902d733c7522803d26f770f6ccc92b4da98b54569f42b0b7e124af59fe8685')
+#sha256sums=('5c902d733c7522803d26f770f6ccc92b4da98b54569f42b0b7e124af59fe8685')
+sha256sums=('SKIP')
+
 
 pkgver() {
   cd "$pkgname"
@@ -59,7 +61,6 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  # export PNPM_HOME="$srcdir/pnpm-home"
   pnpm i
   pnpm build
 }
