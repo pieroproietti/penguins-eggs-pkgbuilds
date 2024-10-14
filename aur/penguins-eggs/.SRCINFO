@@ -31,7 +31,6 @@ pkgbase = penguins-eggs
 	depends = squashfs-tools
 	depends = sshfs
 	depends = xdg-utils
-	depends = bash-completion
 	optdepends = bash-completion: eggs autocomplete
 	optdepends = calamares: system installer GUI
 	optdepends = zsh-completions: eggs autocomplete
