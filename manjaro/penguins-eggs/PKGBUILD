@@ -3,6 +3,7 @@
 # Maintainer: Mark Wagie <mark at manjaro dot org>
 # Contributor: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
+
 _commit=4a10b2a21680a8c9f9b01151da2b0cd482fb827e
 pkgname=penguins-eggs
 pkgver=10.0.42
@@ -85,9 +86,6 @@ package() {
 
  # Fix permissions
  chown root:root "$pkgdir/"usr/lib/"$pkgname/"
-
- # Package contains reference to $srcdir
- # find "$pkgdir/"usr/lib/"$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
  # Install documentation
  install -Dm644 README.md -t "$pkgdir/"usr/share/doc/"$pkgname/"
