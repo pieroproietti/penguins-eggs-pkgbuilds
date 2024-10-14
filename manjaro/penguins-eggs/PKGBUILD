@@ -4,6 +4,7 @@
 # Contributor: Muflone https://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
+_commit=81820231bfeb9c6d22cfdb963b3907ea7f2cc36e
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 pkgname=penguins-eggs
 pkgver=10.0.42
@@ -49,7 +50,7 @@ optdepends=(
   'zsh-completions: eggs autocomplete'
 )
 options=('!strip')
-source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
+#source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 #sha256sums=('5c902d733c7522803d26f770f6ccc92b4da98b54569f42b0b7e124af59fe8685')
 sha256sums=('SKIP')
 
