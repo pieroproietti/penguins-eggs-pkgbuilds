@@ -83,12 +83,14 @@ package() {
         scripts \
         syslinux \
         "$pkgdir/usr/lib/$pkgname/"
-
+    
+  #rm -rf "$pkgdir/usr/lib/$pkgname/node_modules/.pnpm/"
+      
   # Fix permissions
   chown root:root "$pkgdir/usr/lib/$pkgname/"{dist,node_modules}
 
   # Package contains reference to $srcdir
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  #find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
   #local tmppackage="$(mktemp)"
   #local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
