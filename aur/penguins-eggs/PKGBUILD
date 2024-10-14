@@ -65,7 +65,7 @@ build() {
 
 package() {
  cd "$srcdir"/"$pkgname"
- rm -rf node_modules/.pnpm
+ #rm -rf node_modules/.pnpm
 
  install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
  cp -r addons \
