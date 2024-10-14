@@ -15,7 +15,7 @@ depends=(
  'arch-install-scripts'
  'dosfstools'
  'erofs-utils'
- 'findutils' 
+ 'findutils'
  'git'
  'grub'
  'jq'
@@ -37,7 +37,6 @@ depends=(
  'squashfs-tools'
  'sshfs'
  'xdg-utils' 
- 'bash-completion'
 )
 optdepends=(
  'bash-completion: eggs autocomplete'
@@ -65,7 +64,6 @@ build() {
 
 package() {
  cd "$srcdir"/"$pkgname"
- #rm -rf node_modules/.pnpm
 
  install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
  cp -r addons \
