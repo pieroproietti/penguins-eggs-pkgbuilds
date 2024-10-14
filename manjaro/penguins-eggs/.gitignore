@@ -1,0 +1,11 @@
+# Ignore everything in penguins-eggs
+*
+
+# But not these files...
+!.gitignore
+!.SRCINFO
+!export.sh
+!PKGBUILD
+!c
+!e
+!m
