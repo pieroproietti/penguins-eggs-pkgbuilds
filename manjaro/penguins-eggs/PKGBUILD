@@ -4,7 +4,7 @@
 # Contributor: Muflone https://www.muflone.com/contacts/english/
 # Contributor: osiixy <osiixy at gmail dot com>
 
-_commit=81820231bfeb9c6d22cfdb963b3907ea7f2cc36e
+_commit=886fbfaeb7d255003ce793e04634c61edcdcc6d9
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
 pkgname=penguins-eggs
 pkgver=10.0.42
