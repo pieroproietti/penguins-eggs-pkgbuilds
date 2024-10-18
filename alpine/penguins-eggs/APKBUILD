@@ -2,13 +2,15 @@
 #
 # Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Mantainer: Piero Proietti <piero.proietti@gmail.com>
+_commit=5b5d6b2c6025e56a4da56962a936c329d1859851
 
 pkgname=penguins-eggs
-pkgver=10.0.42
+pkgver=10.0.44
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
-arch="x86_64 x86"
+#arch="x86_64 x86"
+arch="noarch"
 license="GPL-3.0-or-later"
 depends="
 	alpine-conf
@@ -33,17 +35,22 @@ depends="
 makedepends="
 	pnpm
 	"
-subpackages="$pkgname-bash-completion $pkgname-doc"
+#subpackages="$pkgname-bash-completion $pkgname-doc"
 
 # swap from develop to release
 #source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
 # esiste
 source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
-
+#source="https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
 
 # install="$pkgname.post-install $pkgname.post-deinstall"
 
 options="!check net" # No tests
+
+pkgver() {
+ cd "$srcdir"/"$pkgname"
+ node -pe "require('./package.json').version"
+}
 
 # for develop release
 #builddir="$srcdir"/penguins-eggs-develop
@@ -98,5 +105,5 @@ package() {
 }
 
 sha512sums="
-dd41d6e3a46ee60c3a1fed6b2fe1a47e5485ea08c06881be98a06030804e7e2f8787ebb3fb04390b00c8f08c4d15251bc0d6c68c56672740b67e95ef9e2e58a3  penguins-eggs-10.0.42.tar.gz
+c5e4d054a23cf8f8e63a49baf8cdd50e2700ef193229e0831206639b29f6edb718996deaebb0fec1786f5cd7313e0744154d5fd0e76a5333e4ccba1ba58efc48  penguins-eggs-10.0.44.tar.gz
 "
