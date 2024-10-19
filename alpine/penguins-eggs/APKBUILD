@@ -6,10 +6,10 @@ _commit=5b5d6b2c6025e56a4da56962a936c329d1859851
 
 pkgname=penguins-eggs
 pkgver=10.0.44
-pkgrel=0
+pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
-arch="noarch"
+arch="x86_64"
 license="GPL-3.0-or-later"
 depends="
 	alpine-conf
@@ -51,8 +51,19 @@ build() {
 package() {
 	install -Dm644 .oclif.manifest.json package.json \
 		-t "$pkgdir/usr/lib/$pkgname/"
-	cp -r addons assets bin conf ipxe dist dracut mkinitcpio mkinitfs node_modules scripts \
-		"$pkgdir/usr/lib/$pkgname/"
+	cp -r addons \
+	 assets \
+	 bin \
+	 conf \
+	 ipxe \
+	 dist \
+	 dracut \
+	 mkinitcpio \
+	 mkinitfs \
+	 node_modules \
+	 scripts \
+	 syslinux \
+	 "$pkgdir/usr/lib/$pkgname/"
 
 	# Fix permissions
 	chown root:root "$pkgdir/usr/lib/$pkgname/"
