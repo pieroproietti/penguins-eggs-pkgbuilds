@@ -9,7 +9,6 @@ pkgver=10.0.44
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
-#arch="x86_64 x86"
 arch="noarch"
 license="GPL-3.0-or-later"
 depends="
@@ -32,28 +31,18 @@ depends="
 	squashfs-tools
 	sshfs
 	xorriso"
-makedepends="
-	pnpm
-	"
-#subpackages="$pkgname-bash-completion $pkgname-doc"
+makedepends="pnpm"
+subpackages="$pkgname-bash-completion $pkgname-doc"
 
-# swap from develop to release
-#source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/develop.tar.gz"
-# esiste
-source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
-#source="https://github.com/pieroproietti/penguins-eggs.git#commit=$_commit"
+# swap branch devel to release
+source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/devel.tar.gz"
+builddir="$srcdir"/penguins-eggs-devel
+#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
 # install="$pkgname.post-install $pkgname.post-deinstall"
 
 options="!check net" # No tests
 
-pkgver() {
- cd "$srcdir"/"$pkgname"
- node -pe "require('./package.json').version"
-}
-
-# for develop release
-#builddir="$srcdir"/penguins-eggs-develop
 build() {
 	pnpm install
 	pnpm build
@@ -105,5 +94,5 @@ package() {
 }
 
 sha512sums="
-c5e4d054a23cf8f8e63a49baf8cdd50e2700ef193229e0831206639b29f6edb718996deaebb0fec1786f5cd7313e0744154d5fd0e76a5333e4ccba1ba58efc48  penguins-eggs-10.0.44.tar.gz
+2f2ae1d2776bf760646e5437a8e596eb6508d2a10a68d4b2fb74f90835d6dbdf93feca5c9cbf5dd50c411d3f87b9d395d618062b9981f667d9dce2a27e16e2ce  devel.tar.gz
 "
