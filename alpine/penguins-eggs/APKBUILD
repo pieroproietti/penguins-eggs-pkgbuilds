@@ -5,7 +5,7 @@
 _commit=5b5d6b2c6025e56a4da56962a936c329d1859851
 
 pkgname=penguins-eggs
-pkgver=10.0.44
+pkgver=10.0.45
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -31,6 +31,7 @@ depends="
  squashfs-tools
  sshfs
  xorriso"
+
 makedepends="pnpm"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
@@ -44,8 +45,8 @@ builddir="$srcdir"/penguins-eggs-devel
 options="!check net" # No tests
 
 build() {
-    pnpm install
-    pnpm build
+ pnpm install
+ pnpm build
 }
 
 package() {
