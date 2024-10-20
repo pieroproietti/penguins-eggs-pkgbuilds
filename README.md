@@ -1,15 +1,14 @@
-eggs PKGBUILDs
+# penguins-eggs-pkgbuilds
 
-# Arch (AUR)
+## Arch (AUR)
 * [calamares-eggs](./aur/calamares-eggs)
 * [penguins-eggs](https://aur.archlinux.org/packages/penguins-eggs)
-## # [Publish](./PUBLISH.md)
+### # [Publish](./PUBLISH.md)
 
-# Manjaro (Community)
+## Manjaro (Community)
 * [penguins-eggs](https://gitlab.manjaro.org/packages/community/penguins-eggs)
 
-
-# Alpine Linux aports
+## Alpine Linux aports
 
 Creare un fork di [aports](https://gitlab.alpinelinux.org/alpine/aports) esempio: `https://gitlab.alpinelinux.org/pieroproietti/aports/`
 

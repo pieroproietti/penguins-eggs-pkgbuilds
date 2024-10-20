@@ -2,7 +2,6 @@
 #
 # Contributor: Piero Proietti <piero.proietti@gmail.com>
 # Mantainer: Piero Proietti <piero.proietti@gmail.com>
-_commit=5b5d6b2c6025e56a4da56962a936c329d1859851
 
 pkgname=penguins-eggs
 pkgver=10.0.45
@@ -35,12 +34,12 @@ depends="
 makedepends="pnpm"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
-# swap branch devel to release
-source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/devel.tar.gz"
+# devel
 builddir="$srcdir"/penguins-eggs-devel
-#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/devel.tar.gz"
 
-# install="$pkgname.post-install $pkgname.post-deinstall"
+# release
+#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
 
 options="!check net" # No tests
 
