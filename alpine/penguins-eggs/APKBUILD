@@ -12,25 +12,25 @@ url="https://penguins-eggs.net"
 arch="x86_64"
 license="GPL-3.0-or-later"
 depends="
-	alpine-conf
-	apk-tools
-	bash-completion
-	cryptsetup
-	curl
-	dosfstools
-	git
-	fuse
-	lsblk
-	lsb-release
-	lvm2
-	jq
-	mkinitfs
-	nodejs
-	parted
-	rsync
-	squashfs-tools
-	sshfs
-	xorriso"
+ alpine-conf
+ apk-tools
+ bash-completion
+ cryptsetup
+ curl
+ dosfstools
+ git
+ fuse
+ lsblk
+ lsb-release
+ lvm2
+ jq
+ mkinitfs
+ nodejs
+ parted
+ rsync
+ squashfs-tools
+ sshfs
+ xorriso"
 makedepends="pnpm"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
@@ -44,66 +44,64 @@ builddir="$srcdir"/penguins-eggs-devel
 options="!check net" # No tests
 
 build() {
-	pnpm install
-	pnpm build
+    pnpm install
+    pnpm build
 }
 
 package() {
-	install -Dm644 .oclif.manifest.json package.json \
-		-t "$pkgdir/usr/lib/$pkgname/"
-	cp -r addons \
-	 assets \
-	 bin \
-	 conf \
-	 ipxe \
-	 dist \
-	 dracut \
-	 mkinitcpio \
-	 mkinitfs \
-	 node_modules \
-	 scripts \
-	 syslinux \
-	 "$pkgdir/usr/lib/$pkgname/"
+ install -Dm644 .oclif.manifest.json package.json \
+  -t "$pkgdir/usr/lib/$pkgname/"
+ cp -r addons \
+  assets \
+  bin \
+  conf \
+  ipxe \
+  dist \
+  dracut \
+  mkinitcpio \
+  mkinitfs \
+  node_modules \
+  scripts \
+  syslinux \
+  "$pkgdir/usr/lib/$pkgname/"
 
-	# Fix permissions
-	chown root:root "$pkgdir/usr/lib/$pkgname/"
+ # Fix permissions
+ chown root:root "$pkgdir/usr/lib/$pkgname/"
 
-	# Package contains reference to $srcdir
-	find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+ # Package contains reference to $srcdir
+ find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-	# Install documentation
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+ # Install documentation
+ install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-	# Install bash completion files
-	install -d "$pkgdir"/usr/share/bash-completion/completions
-	mv "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
-		"$pkgdir"/usr/share/bash-completion/completions/
+ # Install bash completion files
+ install -d "$pkgdir"/usr/share/bash-completion/completions
+ mv "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
+  "$pkgdir"/usr/share/bash-completion/completions/
 
-	# Install Zsh completion files
-	install -d "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
-	mv "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
-		"$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
+ # Install Zsh completion files
+ install -d "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
+ mv "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
+  "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 
-	# Install man page
-	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir"/usr/share/man/man1/
+ # Install man page
+  install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir"/usr/share/man/man1/
 
-	# Install desktop file
-	install -Dm644 "assets/$pkgname.desktop" \
-		-t "$pkgdir"/usr/share/applications/
+ # Install desktop file
+ install -Dm644 "assets/$pkgname.desktop" \
+  -t "$pkgdir"/usr/share/applications/
 
-	# Install icon
-	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
+ # Install icon
+ install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
-	# revitalize mom
-	chmod +x "$pkgdir"/usr/lib/penguins-eggs/scripts/mom.sh
+ # revitalize mom
+ chmod +x "$pkgdir"/usr/lib/penguins-eggs/scripts/mom.sh
 
-
-	# Symlink executable
-	install -d "$pkgdir/"usr/bin
-	ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
-
+ # Symlink executable
+ install -d "$pkgdir/"usr/bin
+ ln -s /usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
 }
 
 sha512sums="
-2f2ae1d2776bf760646e5437a8e596eb6508d2a10a68d4b2fb74f90835d6dbdf93feca5c9cbf5dd50c411d3f87b9d395d618062b9981f667d9dce2a27e16e2ce  devel.tar.gz
+5d51fe9e5ace2c518ebb63a242e8805cb54760f236115cd3b81f3a1fd5916796d6f7dfafb981d376abb7b5fdf59465ebc38c978c4e8284699d61a0ec030d82ed  devel.tar.gz
 "
