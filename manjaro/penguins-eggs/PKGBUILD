@@ -4,7 +4,7 @@
 # Contributor: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=913230c2563d55e9c39ace52b6c873ed8ef0e61e
+_commit=2ffe486d9ae3fa7f22bd675e0867f1282a3857fa
 pkgname=penguins-eggs
 pkgver=10.0.43
 pkgrel=1
