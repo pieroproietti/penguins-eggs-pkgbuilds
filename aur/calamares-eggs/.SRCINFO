@@ -1,6 +1,6 @@
 pkgbase = calamares-eggs
 	pkgdesc = calamares-eggs: supply by penguins-eggs project
-	pkgver = 3.3.9
+	pkgver = 3.3.10
 	pkgrel = 1
 	url = https://github.com/calamares/calamares
 	arch = i686
@@ -30,9 +30,9 @@ pkgbase = calamares-eggs
 	depends = solid
 	depends = squashfs-tools
 	depends = yaml-cpp
-	provides = calamares=3.3.9
+	provides = calamares=3.3.10
 	conflicts = calamares
-	source = https://github.com/calamares/calamares/releases/download/v3.3.9/calamares-3.3.9.tar.gz
+	source = https://github.com/calamares/calamares/releases/download/v3.3.10/calamares-3.3.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = calamares-eggs
