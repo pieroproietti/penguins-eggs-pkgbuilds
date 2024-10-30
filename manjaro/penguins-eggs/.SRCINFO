@@ -30,12 +30,13 @@ pkgbase = penguins-eggs
 	depends = rsync
 	depends = squashfs-tools
 	depends = sshfs
+	depends = wget
 	depends = xdg-utils
 	optdepends = bash-completion: eggs autocomplete
 	optdepends = calamares: system installer GUI
 	optdepends = zsh-completions: eggs autocomplete
 	options = !strip
-	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=732a19d71e36bca038bfeaa561007e58ed858c91
+	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=55a5021c147ec8b6060bbcfa476e177a054f2b36
 	sha256sums = SKIP
 
 pkgname = penguins-eggs
