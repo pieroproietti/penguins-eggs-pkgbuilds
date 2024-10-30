@@ -37,6 +37,7 @@ depends=(
  'rsync'
  'squashfs-tools'
  'sshfs'
+ 'wget'
  'xdg-utils'
 )
 optdepends=(
