@@ -4,7 +4,7 @@
 # Mantainer: Piero Proietti <piero.proietti@gmail.com>
 
 pkgname=penguins-eggs
-pkgver=10.0.45
+pkgver=10.0.48
 pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
@@ -35,11 +35,11 @@ makedepends="pnpm"
 subpackages="$pkgname-bash-completion $pkgname-doc"
 
 # devel
-builddir="$srcdir"/penguins-eggs-devel
-source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/devel.tar.gz"
+#builddir="$srcdir"/penguins-eggs-devel
+#source="https://github.com/pieroproietti/penguins-eggs/archive/refs/heads/devel.tar.gz"
 
 # release
-#source="https://github.com/pieroproietti/penguins-eggs/archive/$pkgver/penguins-eggs-$pkgver.tar.gz"
+source="https://github.com/pieroproietti/penguins-eggs/archive/v$pkgver/penguins-eggs-v$pkgver.tar.gz"
 
 options="!check net" # No tests
 
@@ -103,5 +103,5 @@ package() {
 }
 
 sha512sums="
-cf2a57df6360a916c0ad34159252c34793e9a8d6b72fde0bc13e9afc72a581f654d9bc310cd984352a8c7eee660dc00f3160a92c287342862857a8a54cba9b20  devel.tar.gz
+a36ee38118fe99dcdddb15d1dbf488389affba4519489d6047ff545bbd0e649ed5af067e6d579c2a439ae525ab7d143acf98a9b43701cdffba063f8051cc6fb8  penguins-eggs-v10.0.48.tar.gz
 "
