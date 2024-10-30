@@ -30,7 +30,6 @@ pkgbase = penguins-eggs
 	depends = rsync
 	depends = squashfs-tools
 	depends = sshfs
-	depends = syslinux
 	depends = wget
 	depends = xdg-utils
 	optdepends = bash-completion: eggs autocomplete
