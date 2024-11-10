@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=10.0.50
-pkgrel=1
+pkgrel=0
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 url="https://penguins-eggs.net"
 arch="x86_64"
