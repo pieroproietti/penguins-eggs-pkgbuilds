@@ -5,42 +5,21 @@ Summary:       A console tool that allows you to remaster your system and redist
 Group:         System/Tools
 Vendor:        artisan
 Distribution:  fedora
-Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
+Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>
 URL:           https://penguins-eggs.net/
-Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.bz2
+Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.gz
 License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
 BuildRequires: pnpm
-Requires: bash-completion
- cryptsetup \
- curl \
- device-mapper \
- dmraid \
- dosfstools \
- dracut \
- dracut-live \
- fuse \
- git \
- grub2-tools-extra \
- jq \
- lvm2 \
- nodejs \
- nvme-cli \
- overlayfs-tools \
- parted \
- rsync \
- squashfs-tools \
- sshfs \
- wget \
- xdg-user-dirs \
- xorriso \
- zstd
+Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut dracut-live fuse git grub2-tools-extra jq lvm2 nodejs nvme-cli overlayfs-tools parted rsync squashfs-tools sshfs wget xdg-user-dirs xorriso zstd
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
 
 #% debug_package
+%global debug_package %{nil}  # Aggiungi questa linea
+
 
 %prep
 %setup -q
@@ -110,4 +89,6 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 %doc README.md
 
 %changelog
+* Tue Nov 26 2024 Piero Proietti <piero.proietti@gmail.com> 10.0.52-2mamba
 * Tue Nov 26 2024 Silvan Calarco <silvan.calarco@mambasoft.it> 10.0.52-1mamba
+
