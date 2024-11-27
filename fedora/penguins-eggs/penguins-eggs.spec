@@ -5,14 +5,38 @@ Summary:       A console tool that allows you to remaster your system and redist
 Group:         System/Tools
 Vendor:        artisan
 Distribution:  fedora
-Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>
+Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
 URL:           https://penguins-eggs.net/
 Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.bz2
 License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
 BuildRequires: pnpm
-Requires:      nodejs
+Requires:   bash-completion \
+            cryptsetup \
+            curl \
+            device-mapper \
+            dmraid \
+            dosfstools \
+            dracut \
+            dracut-live \
+            fuse \
+            git \
+            grub2-tools-extra \
+            jq \
+            lvm2 \
+            nodejs \
+            nvme-cli \
+            overlayfs-tools \
+            parted \
+            rsync \
+            squashfs-tools \
+            sshfs \
+            wget \
+            xdg-user-dirs \
+            xorriso \
+            zstd
+
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
