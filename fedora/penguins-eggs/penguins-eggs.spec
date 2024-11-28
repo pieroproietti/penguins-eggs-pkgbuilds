@@ -1,10 +1,10 @@
 Name:          penguins-eggs
 Version:       10.0.52
-Release:       1mamba
+Release:       1fedora
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools
-Vendor:        openmamba
-Distribution:  openmamba
+Vendor:        piero
+Distribution:  fedora
 Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
 URL:           https://penguins-eggs.net/
 Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.gz
@@ -88,6 +88,5 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 %doc README.md
 
 #%changelog
-* Tue Nov 28 2024 Piero Proietti <piero.proietti@gmail.com> 10.0.52-1mamba
-
+#* Tue Nov 28 2024 Piero Proietti <piero.proietti@gmail.com> 10.0.52-1fedora
 
