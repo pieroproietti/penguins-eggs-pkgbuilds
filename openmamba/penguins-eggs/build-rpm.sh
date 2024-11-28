@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # check if we are on openmamba
 if [ ! -f /etc/openmamba-release ]; then

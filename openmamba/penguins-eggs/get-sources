@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # check if we are on openmamba
 if [ ! -f /etc/openmamba-release ]; then
@@ -15,11 +15,11 @@ fi
 
 # Controlla se il primo argomento è vuoto
 if [ -z "$1" ]; then
-  VERSION=v10.0.52
+  VERSION=10.0.52
 else
   VERSION=$1  
 fi
 
 
-sudo wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/$VERSION.tar.gz -O /usr/src/RPM/SOURCES/penguins-egggs-$VERSION.tar.gz
+sudo wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O /usr/src/RPM/SOURCES/penguins-eggs-$VERSION.tar.gz
 
