@@ -13,5 +13,5 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 /usr/bin/rpmbuild -ba ./penguins-eggs.spec
-ls /usr/src/RPM/RPMS/x86_64/penguins-eggs-*
+ls ~/rpmbuild/RPMS/x86_64/penguins-eggs-*
 
