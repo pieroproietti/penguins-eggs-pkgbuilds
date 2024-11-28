@@ -18,7 +18,7 @@ Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools drac
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
 
 #% debug_package
-%global debug_package %{nil}  # Aggiungi questa linea
+%global debug_package %{nil}  # no debug package
 
 %prep
 %setup -q
@@ -88,6 +88,6 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 %doc README.md
 
 %changelog
-* Tue Nov 26 2024 Piero Proietti <piero.proietti@gmail.com> 10.0.52-2mamba
+* Tue Nov 27 2024 Piero Proietti <piero.proietti@gmail.com> 10.0.52-1fedora
 * Tue Nov 26 2024 Silvan Calarco <silvan.calarco@mambasoft.it> 10.0.52-1mamba
 
