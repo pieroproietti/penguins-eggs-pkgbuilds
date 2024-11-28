@@ -1,5 +1,5 @@
 Name:          penguins-eggs
-Version:       10.0.52
+Version:       10.0.53
 Release:       1mamba
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools

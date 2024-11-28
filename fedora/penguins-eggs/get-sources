@@ -15,7 +15,7 @@ fi
 
 # Controlla se il primo argomento è vuoto
 if [ -z "$1" ]; then
-  VERSION=10.0.52
+  VERSION=10.0.53
 else
   VERSION=$1  
 fi
