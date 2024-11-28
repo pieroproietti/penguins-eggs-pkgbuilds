@@ -15,11 +15,11 @@ fi
 
 # Controlla se il primo argomento è vuoto
 if [ -z "$1" ]; then
-  VERSION=v10.0.52
+  VERSION=10.0.52
 else
   VERSION=$1  
 fi
 
 
-wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O ~/rpmbuild/RPM/SOURCES/penguins-egggs-$VERSION.tar.gz
+sudo wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O ~/rpmbuild/SOURCES/penguins-eggs-$VERSION.tar.gz
 
