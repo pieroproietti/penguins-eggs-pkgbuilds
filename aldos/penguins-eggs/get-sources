@@ -1,8 +1,8 @@
-!#/bin/bash
+#!/bin/bash
 
-# check if we are on fedora
-if [ ! -f /etc/fedora-release ]; then
-    echo "This script is only for fedora"
+# check if we are on aldos
+if [ ! -f /etc/aldos-release ]; then
+    echo "This script is only for aldos"
     exit
 fi
 
@@ -21,5 +21,5 @@ else
 fi
 
 
-wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O ~/rpmbuild/SOURCES/penguins-eggs-$VERSION.tar.gz
+sudo wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O /usr/src/RPM/SOURCES/penguins-eggs-$VERSION.tar.gz
 

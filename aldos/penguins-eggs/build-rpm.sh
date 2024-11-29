@@ -1,8 +1,8 @@
-!#/bin/bash
+#!/bin/bash
 
-# check if we are on fedora
-if [ ! -f /etc/fedora-release ]; then
-    echo "This script is only for fedora"
+# check if we are on aldos
+if [ ! -f /etc/aldos-release ]; then
+    echo "This script is only for aldos"
     exit
 fi
 
@@ -13,5 +13,5 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 /usr/bin/rpmbuild -ba ./penguins-eggs.spec
-ls ~/rpmbuild/RPMS/x86_64/penguins-eggs-*
+ls /usr/src/RPM/RPMS/x86_64/penguins-eggs-*
 
