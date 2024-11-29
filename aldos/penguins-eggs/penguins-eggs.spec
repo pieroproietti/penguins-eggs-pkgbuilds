@@ -3,7 +3,7 @@ Version:       10.0.53
 Release:       1aldos
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools
-Vendor:        openmamba
+Vendor:        aldos
 Distribution:  aldos
 Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
 URL:           https://penguins-eggs.net/
@@ -89,5 +89,4 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 
 %%changelog
 * Tue Nov 29 2024 Piero Proietti <piero.proietti@gmail.com> - 10.0.52-1aldos
-
-
+- descrizione nada
