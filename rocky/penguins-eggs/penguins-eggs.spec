@@ -11,7 +11,7 @@ Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/pe
 License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
-# BuildRequires: pnpm
+BuildRequires: nodejs
 Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut fuse git jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
 
 %description
