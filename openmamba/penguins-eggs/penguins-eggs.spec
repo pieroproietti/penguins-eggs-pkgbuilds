@@ -88,6 +88,6 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 %doc README.md
 
 %%changelog
-* Tue Nov 28 2024 Piero Proietti <piero.proietti@gmail.com> - 10.0.52-1mamba
+* Sun Dec 01 2024 Piero Proietti <piero.proietti@gmail.com> - 10.0.53-1mamba
 
 
