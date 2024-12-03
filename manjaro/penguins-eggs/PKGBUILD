@@ -4,10 +4,10 @@
 # Contributor: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=d0202b3fb4e310e7974719dc96c34d3b70a2b4b8
+_commit=de39e7a979c02ef8f9a2638fd99e587a5f939dfc
 pkgname=penguins-eggs
 pkgver=10.0.54
-pkgrel=1
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
