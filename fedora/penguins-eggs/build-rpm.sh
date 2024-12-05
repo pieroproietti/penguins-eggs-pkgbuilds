@@ -1,4 +1,6 @@
-!#/bin/bash
+#!/bin/bash
+
+export NODE_ENV=development
 
 # check if we are on fedora
 if [ ! -f /etc/fedora-release ]; then
