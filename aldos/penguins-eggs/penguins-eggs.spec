@@ -1,5 +1,5 @@
 Name:          penguins-eggs
-Version:       10.0.53
+Version:       10.0.54
 Release:       1aldos
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools
