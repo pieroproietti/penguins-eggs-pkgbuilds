@@ -1,5 +1,5 @@
 Name:          penguins-eggs
-Version:       10.0.53
+Version:       10.0.54
 Release:       1rocky9_5
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools
@@ -12,7 +12,7 @@ License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
 BuildRequires: nodejs
-Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut fuse git grub2-efi-x64 grub2-efi-x64-modules grub2-tools-extra jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
+Requires:   bash-completion cryptsetup curl device-mapper dosfstools dracut fuse git grub2-efi-x64 grub2-efi-x64-modules grub2-tools-extra jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
@@ -24,7 +24,6 @@ A console tool that allows you to remaster your system and redistribute it as li
 %setup -q
 
 %build
-# Based on Arch Linux pkgbuild
 pnpm install
 pnpm build  
 
