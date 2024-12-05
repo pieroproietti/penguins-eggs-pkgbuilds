@@ -1,11 +1,11 @@
 Name:          penguins-eggs
-Version:       10.0.53
+Version:       10.0.54
 Release:       1fedora
 Summary:       A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
 Group:         System/Tools
 Vendor:        piero
 Distribution:  fedora
-Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
+Packager:      Piero Proietti <piero.proietti@gmail.com>
 URL:           https://penguins-eggs.net/
 Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.gz
 License:       GPL
