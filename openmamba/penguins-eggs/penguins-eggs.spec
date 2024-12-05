@@ -12,7 +12,7 @@ License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
 BuildRequires: pnpm
-Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut fuse git jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
+Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut fuse git grub2-efi-x64 grub2-efi-x64-modules grub2-tools-extra jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
