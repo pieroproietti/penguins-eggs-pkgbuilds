@@ -2,12 +2,11 @@
 
 # check if we are on rocky
 if [ ! -f /etc/rocky-release ]; then
-  if [ ! -f /etc/alma-release ]; then
-      echo "This script is only for rocky"
-      exit
-  fi
+    if [ ! -f /etc/almalinux-release ]; then
+        echo "This script is intended for rockylinux or almalinux!"
+        exit 1
+    fi
 fi
-
 
 # check if we are root
 if [ "$EUID" -eq 0 ]
