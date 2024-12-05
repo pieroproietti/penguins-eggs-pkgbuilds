@@ -2,8 +2,10 @@
 
 # check if we are on rocky
 if [ ! -f /etc/rocky-release ]; then
-    echo "This script is only for rocky"
-    exit
+  if [ ! -f /etc/alma-release ]; then
+      echo "This script is only for rocky"
+      exit
+  fi
 fi
 
 
