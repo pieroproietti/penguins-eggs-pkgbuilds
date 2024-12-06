@@ -5,26 +5,28 @@ This repository started as `penguins-eggs-pkgbuilds` and included package creati
 There is no need to use this repository for the creation of DEB packages, which is done directly from penguins-eggs, using on the source the command: `pnpm deb`
 
 ## ALDOS  (RPM)
-* cd aldos
+* `cd aldos`
 
 ## AlmaLinux/RockyLinux  (RPM)
-* cd rocky
+* `cd rocky`
 
 ## Alpine Linux (apk)
-* cd alpine
+* `cd alpine`
 
 ## ArchLinux (PKGBUILD)
-* cd aur
+* `cd aur`
 * [calamares-eggs](./aur/calamares-eggs)
 * [penguins-eggs](https://aur.archlinux.org/packages/penguins-eggs)
 ### # [Publish](./PUBLISH.md)
 
 ## Fedora  (RPM)
-* cd fedora
+* `cd fedora`
 
 ## Manjaro (PKGBUILD)
-* cd manjaro
+* `cd manjaro`
 * [penguins-eggs](https://gitlab.manjaro.org/packages/community/penguins-eggs)
 
 ## Openmamba (RPM)
-* cd openmamba
+* `cd openmamba/penguins-eggs`
+* `./get-sources`
+* `./build-rpm`
