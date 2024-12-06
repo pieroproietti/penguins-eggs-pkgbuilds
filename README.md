@@ -1,4 +1,9 @@
-# penguins-eggs-pkgbuilds
+# penguins-packs
+
+This repository started as `penguins-eggs-pkgbuilds` and included package creation for Arch and Manjaro. Later the package creation for AlpineLinux was included, finally the rpm packages for AlmaLinux/Rock, fedora, Openmamba and OpenSuSE were included.
+
+## AlmaLinux/RockyLinux (rocky) 
+
 
 ## Arch (AUR)
 * [calamares-eggs](./aur/calamares-eggs)
