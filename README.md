@@ -26,11 +26,11 @@ There is no need to use this repository for the creation of DEB packages, which 
 * `./m`
 
 [calamares-eggs](./aur/calamares-eggs)
-* `cd aur/penguins/eggs`
+* `cd aur/calamares-eggs`
 * `./m`
 
 #### Instructions
-[Publish package to AUR](./PUBLISH.md)
+[Publish package to AUR](./PUBLISH.md), link to 
 [penguins-eggs on AUR](https://aur.archlinux.org/packages/penguins-eggs)
 
 ## Fedora  (RPM)
