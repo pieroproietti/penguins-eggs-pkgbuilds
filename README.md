@@ -6,25 +6,45 @@ There is no need to use this repository for the creation of DEB packages, which 
 
 ## ALDOS  (RPM)
 * `cd aldos`
+*  `./create-struct.sh`
+*  `cd penguins-eggs`
+* `./get-sources`
+* `./build-rpm`
 
 ## AlmaLinux/RockyLinux  (RPM)
 * `cd rocky`
+*  `./create-struct.sh`
+*  `cd penguins-eggs`
+* `./get-sources`
+* `./build-rpm`
 
 ## Alpine Linux (apk)
 * `cd alpine`
 
 ## ArchLinux (PKGBUILD)
-* `cd aur`
-* [calamares-eggs](./aur/calamares-eggs)
-* [penguins-eggs](https://aur.archlinux.org/packages/penguins-eggs)
-### # [Publish](./PUBLISH.md)
+* `cd aur/penguins/eggs`
+* `./m`
+
+[calamares-eggs](./aur/calamares-eggs)
+* `cd aur/penguins/eggs`
+* `./m`
+
+#### Instructions
+[Publish package to AUR](./PUBLISH.md)
+[penguins-eggs on AUR](https://aur.archlinux.org/packages/penguins-eggs)
 
 ## Fedora  (RPM)
 * `cd fedora`
+*  `./create-struct.sh`
+*  `cd penguins-eggs`
+* `./get-sources`
+* `./build-rpm`
 
 ## Manjaro (PKGBUILD)
-* `cd manjaro`
-* [penguins-eggs](https://gitlab.manjaro.org/packages/community/penguins-eggs)
+* `cd manjaro/penguins/eggs`
+* `./m`
+
+[penguins-eggs on Manjaro community](https://gitlab.manjaro.org/packages/community/penguins-eggs)
 
 ## Openmamba (RPM)
 * `cd openmamba/penguins-eggs`
