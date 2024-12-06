@@ -11,8 +11,8 @@ Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/pe
 License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
-BuildRequires: nodejs-devel
-Requires:   bash-completion cryptsetup curl device-mapper dosfstools dracut fuse git grub2-efi-x64 grub2-efi-x64-modules grub2-tools-extra jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
+BuildRequires: nodejs pnpm
+Requires: bash-completion cryptsetup curl device-mapper dosfstools dracut fuse git grub2-efi-x64 grub2-efi-x64-modules grub2-tools-extra jq lvm2 nodejs nvme-cli parted rsync sshfs wget xdg-user-dirs xorriso zstd
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
