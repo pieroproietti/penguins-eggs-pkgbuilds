@@ -21,5 +21,5 @@ else
 fi
 
 
-wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O ~/rpmbuild/SOURCES/penguins-eggs-$VERSION.tar.gz
+wget https://github.com/pieroproietti/penguins-eggs/archive/refs/tags/v$VERSION.tar.gz -O /usr/src/RPM/SOURCES/penguins-eggs-$VERSION.tar.gz
 
