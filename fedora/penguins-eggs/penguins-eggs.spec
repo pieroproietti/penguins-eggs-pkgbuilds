@@ -11,8 +11,8 @@ Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/pe
 License:       GPL
 ## AUTOBUILDREQ-BEGIN
 ## AUTOBUILDREQ-END
-BuildRequires: pnpm nodejs-devel
-Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut dracut-live fuse git grub2-tools-extra jq lvm2 nodejs nvme-cli overlayfs-tools parted rsync squashfs-tools sshfs wget xdg-user-dirs xorriso zstd
+BuildRequires: nodejs-devel pnpm 
+Requires:   bash-completion cryptsetup curl device-mapper dmraid dosfstools dracut dracut-live fuse git grub2-tools-extra jq lvm2 nodejs-devel nvme-cli overlayfs-tools parted rsync squashfs-tools sshfs wget xdg-user-dirs xorriso zstd
 
 %description
 A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE.
@@ -88,5 +88,5 @@ ln -s ../lib/%{name}/bin/run.js %{buildroot}%{_bindir}/eggs
 %doc README.md
 
 #%changelog
-#* Tue Nov 28 2024 Piero Proietti <piero.proietti@gmail.com> - 10.0.52-1fedora
+#* Tue Nov 28 2024 Piero Proietti <piero.proietti@gmail.com> - 10.0.54-1fedora
 
