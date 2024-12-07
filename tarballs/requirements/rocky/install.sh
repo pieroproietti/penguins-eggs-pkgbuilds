@@ -48,8 +48,9 @@ dnf -y install \
     nvme-cli \
     parted \
     rsync \
-    sshfs \
     squashfs-tools \
+    sshfs \
+    tar \
     wget \
     xdg-user-dirs \
     xorriso \
