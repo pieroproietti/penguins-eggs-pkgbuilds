@@ -49,9 +49,6 @@ dnf -y install \
     xorriso \
     zstd
 
-# install pnpm
-npm i pnpm -g
-
 # mkdir /usr/share/icons
 mkdir -p /usr/share/icons
 
