@@ -78,7 +78,7 @@ case $DISTRO in
         echo "Detected distro Devuan..."
         $SUDO ./requirements/devuan/install.sh
         ;;
-    Fedora)
+    fedora)
         echo "Detected distro Fedora..."
         $SUDO ./requirements/fedora/install.sh
         ;;
