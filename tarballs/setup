@@ -111,7 +111,7 @@ esac
 
 # recreate links grub/isolinux theme
 $SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
-$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
+$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg 
 
 # bash completions
 if [ -d "/usr/share/bash-completion/completions/" ]; then
