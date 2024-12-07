@@ -51,24 +51,60 @@ fi
 #####################################
 # Install Requirements of the distro
 case $DISTRO in
-    ubuntu|debian)
-        echo "Eseguo lo script per Ubuntu/Debian..."
-        $SUDO ./requirements/debian/install.sh
+    ALDOS)
+        echo "Detected distro ALDOS..."
+        $SUDO ./requirements/aldos/install.sh
         ;;
-    fedora)
-        echo "Eseguo lo script per Fedora..."
-        $SUDO ./requirements/fedora/install.sh
+
+    AlmaLinux|RockyLinux)
+        echo "Detected distro AlmaLinux/RockyLinux..."
+        $SUDO ./requirements/rocky/install.sh
         ;;
-    centos|rhel)
-        echo "Eseguo lo script per CentOS/RHEL..."
-        $SUDO ./requirements/script_centos_rhel.sh
+
+    Alpine)
+        echo "Detected distro Alpine..."
+        $SUDO ./requirements/alpine/install.sh
         ;;
-    arch)
-        echo "Eseguo lo script per Arch Linux..."
+
+    Arch)
+        echo "Detected distro Arch..."
         $SUDO ./requirements/arch/install.sh
         ;;
+    Debian)
+        echo "Detected distro Debian..."
+        $SUDO ./requirements/debian/install.sh
+        ;;
+    Devuan)
+        echo "Detected distro Devuan..."
+        $SUDO ./requirements/devuan/install.sh
+        ;;
+    Fedora)
+        echo "Detected distro Fedora..."
+        $SUDO ./requirements/fedora/install.sh
+        ;;
+
+    ManjaroLinux|BigLinux|BigCommunity)
+        echo "Detected distro Manjaro based..."
+        $SUDO ./requirements/manjarolinux/install.sh
+        ;;
+    
+    openmamba)
+        echo "Detected distro openmamba..."
+        $SUDO ./requirements/openmamba/install.sh
+        ;;
+
+    openSUSE)
+        echo "Detected distro openSUSE..."
+        $SUDO ./requirements/opensuse/install.sh
+        ;;
+
+    Ubuntu)
+        echo "Detected distro Ubuntu..."
+        $SUDO ./requirements/ubuntu/install.sh
+        ;;
+
     *)
-        echo "Distribuzione non supportata: $DISTRO"
+        echo "This distro is not supported: $DISTRO"
         exit 1
         ;;
 esac        
