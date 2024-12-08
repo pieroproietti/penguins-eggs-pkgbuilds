@@ -4,19 +4,13 @@ This repository started as `penguins-eggs-pkgbuilds` and included package creati
 
 There is no need to use this repository for the creation of DEB packages, which is done directly from penguins-eggs sources, using the command: `pnpm deb`
 
-## ALDOS  (RPM)
-* `cd aldos`
-*  `./create-struct.sh`
-*  `cd penguins-eggs`
-* `./get-sources`
-* `./build-rpm`
+## ALDOS (tarballs)
+* `cd tarballs`
+* `./setup /path/to/eggs-v10.0.xx-x-amd64.tar.xz`
 
-## AlmaLinux/RockyLinux  (RPM)
-* `cd rocky`
-*  `./create-struct.sh`
-*  `cd penguins-eggs`
-* `./get-sources`
-* `./build-rpm`
+## AlmaLinux/RockyLinux (tarballs)
+* `cd tarballs`
+* `./setup /path/to/eggs-v10.0.xx-x-amd64.tar.xz`
 
 ## Alpine Linux (apk)
 * `cd alpine`
@@ -33,12 +27,9 @@ There is no need to use this repository for the creation of DEB packages, which 
 [Publish package to AUR](./PUBLISH.md), link to 
 [penguins-eggs on AUR](https://aur.archlinux.org/packages/penguins-eggs)
 
-## Fedora  (RPM)
-* `cd fedora`
-*  `./create-struct.sh`
-*  `cd penguins-eggs`
-* `./get-sources`
-* `./build-rpm`
+## Fedora  (tarballs)
+* `cd tarballs`
+* `./setup /path/to/eggs-v10.0.xx-x-amd64.tar.xz`
 
 ## Manjaro (PKGBUILD)
 * `cd manjaro/penguins/eggs`
