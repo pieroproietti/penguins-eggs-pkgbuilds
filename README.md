@@ -6,7 +6,7 @@ There is no need to use this repository for the creation of DEB packages, which 
 
 ## ALDOS (tarballs)
 * `cd tarballs`
-* `./setup /path/to/eggs-v10.0.xx-x-amd64.tar.xz`
+* `./setup /path/to/penguins-eggs-tarball-10.0.54-1-linux-x64.tar.gz`
 
 ## AlmaLinux/RockyLinux (tarballs)
 * `cd tarballs`
