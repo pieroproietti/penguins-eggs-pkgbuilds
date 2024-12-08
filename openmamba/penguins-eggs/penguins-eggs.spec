@@ -5,7 +5,7 @@ Summary:       A console tool that allows you to remaster your system and redist
 Group:         System/Tools
 Vendor:        openmamba
 Distribution:  openmamba
-Packager:      Silvan Calarco <silvan.calarco@mambasoft.it>, Piero Proietti <piero.proietti@gmail.com>
+Packager:      Piero Proietti <piero.proietti@gmail.com>
 URL:           https://penguins-eggs.net/
 Source:        https://github.com/pieroproietti/penguins-eggs.git/v%{version}/penguins-eggs-%{version}.tar.gz
 License:       GPL
