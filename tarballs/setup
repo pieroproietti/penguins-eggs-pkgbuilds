@@ -15,10 +15,10 @@ fi
 
 # title
 clear
-echo "setup penguins-eggs on ${EGGS_HOME}"
+EGGS_HOME="/opt/penguins-eggs/"
+echo "setup will install penguins-eggs on ${EGGS_HOME}"
 
 # start
-EGGS_HOME="/opt/penguins-eggs/"
 # Controlla se il primo argomento è vuoto
 if [ -z "$1" ]; then
     echo "You must pass tarballs path"
@@ -48,8 +48,51 @@ else
     exit 1
 fi
 
+# recreate links grub/isolinux theme
+$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
+$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg 
+
+# bash completions
+if [ -d "/usr/share/bash-completion/completions/" ]; then
+    $SUDO rm -f /usr/share/bash-completion/completions/eggs.bash
+    $SUDO ln -s ${EGGS_HOME}scripts/eggs.bash /usr/share/bash-completion/completions/eggs.bash
+fi
+
+# zsh completions
+if [ -d "/usr/share/zsh/functions/Completion/Zsh/" ]; then
+    $SUDO rm -f /usr/share/zsh/functions/Completion/Zsh/_eggs
+    $SUDO ln -s ${EGGS_HOME}scripts/_eggs /usr/share/zsh/functions/Completion/Zsh/
+fi
+
+# icons
+if [ -d "/usr/share/icons/" ]; then
+    $SUDO rm -f /usr/share/icons/eggs.png
+    $SUDO ln -s ${EGGS_HOME}assets/eggs.png /usr/share/icons/eggs.png
+fi
+
+# man
+if [ -d "/usr/share/man/man1" ]; then
+    $SUDO rm -f /usr/share/man/man1/eggs.1.gz
+    $SUDO ln -s ${EGGS_HOME}manpages/doc/man/eggs.1.gz /usr/share/man/man1/eggs.1.gz
+fi
+
+$SUDO rm -f /usr/bin/eggs
+$SUDO ln -s ${EGGS_HOME}bin/eggs /usr/bin/eggs
+
+# desktop links
+xdg-user-dirs-update --force
+DESKTOP_DIR=$(xdg-user-dir DESKTOP)
+cp ${EGGS_HOME}addons/eggs/adapt/applications/eggs-adapt.desktop "${DESKTOP_DIR}"
+cp ${EGGS_HOME}assets/penguins-eggs.desktop "${DESKTOP_DIR}"
+for f in "$DESKTOP_DIR"/*.desktop; do chmod +x "$f"; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"; done
+
+# basic configuration
+$SUDO eggs config -n
+
+
 #####################################
 # Install Requirements of the distro
+echo "install requirements..."
 case $DISTRO in
     ALDOS)
         echo "Detected distro ALDOS..."
@@ -108,40 +151,3 @@ case $DISTRO in
         exit 1
         ;;
 esac        
-
-# recreate links grub/isolinux theme
-$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
-$SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg 
-
-# bash completions
-if [ -d "/usr/share/bash-completion/completions/" ]; then
-    $SUDO ln -s ${EGGS_HOME}scripts/eggs.bash /usr/share/bash-completion/completions/
-fi
-
-# zsh completions
-if [ -d "/usr/share/zsh/functions/Completion/Zsh/" ]; then
-    $SUDO ln -s ${EGGS_HOME}scripts/_eggs /usr/share/zsh/functions/Completion/Zsh/
-fi
-
-# icons
-if [ -d "/usr/share/icons/" ]; then
-    $SUDO ln -s ${EGGS_HOME}assets/eggs.png /usr/share/icons/
-fi
-
-# man
-if [ -d "/usr/share/man/man1" ]; then
-    $SUDO ln -s ${EGGS_HOME}manpages/doc/man/eggs.1.gz /usr/share/man/man1/eggs.1.gz
-fi
-
-$SUDO rm -f /usr/bin/eggs
-$SUDO ln -s ${EGGS_HOME}bin/eggs /usr/bin/eggs
-
-# desktop links
-xdg-user-dirs-update --force
-DESKTOP_DIR=$(xdg-user-dir DESKTOP)
-cp ${EGGS_HOME}addons/eggs/adapt/applications/eggs-adapt.desktop "${DESKTOP_DIR}"
-cp ${EGGS_HOME}assets/penguins-eggs.desktop "${DESKTOP_DIR}"
-for f in "$DESKTOP_DIR"/*.desktop; do chmod +x "$f"; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"; done
-
-# basic configuration
-$SUDO eggs config -n

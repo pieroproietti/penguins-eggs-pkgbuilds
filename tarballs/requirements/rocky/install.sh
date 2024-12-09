@@ -50,6 +50,7 @@ dnf -y install \
     rsync \
     squashfs-tools \
     sshfs \
+    systemd-boot \
     tar \
     wget \
     xdg-user-dirs \
