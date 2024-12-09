@@ -27,12 +27,13 @@ else
   EGGS_PACKAGE=$1
 fi
 
-# estrae e copia in /opt/penguins-eggs
+# remove /opt/penguins-eggs
 $SUDO rm $EGGS_HOME -rf
+
+# install /opt/penguins-eggs
 tar -xf $EGGS_PACKAGE
 mv eggs penguins-eggs
 $SUDO mv penguins-eggs /opt/
-
 
 #  Verifica la distribuzione Linux in uso
 if [ -f /etc/os-release ]; then
@@ -89,6 +90,13 @@ for f in "$DESKTOP_DIR"/*.desktop; do chmod +x "$f"; gio set -t string "$f" meta
 # basic configuration
 $SUDO eggs config -n
 
+
+
+# with a second parameter exit
+if [ "$#" -gt 1 ]; then
+  echo "penguins-eggs was installed with: no install requirements"
+  exit
+fi
 
 #####################################
 # Install Requirements of the distro

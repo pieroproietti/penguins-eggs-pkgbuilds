@@ -17,6 +17,8 @@ if [ ! -f /etc/rocky-release ]; then
     fi
 fi
 
+
+
 # add epel-release
 dnf -y install epel-release 
 
