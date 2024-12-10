@@ -30,9 +30,13 @@ yum -y install \
     dracut-live \
     fuse \
     git \
+    grub2-efi-x64 \
+    grub2-efi-x64-modules \
     grub2-tools-extra \
     jq \
     lvm2 \
+    nvme-cli \
+    overlayfs-tools \
     parted \
     rsync \
     squashfs-tools \
