@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script installs prerequisites for penguins-eggs
-# on fedora linux, it is intended for development purposes 
+# on ALDOS linux, it is intended for development purposes 
 
 # check if we are root
 if [ "$(id -u)" -ne 0 ]; then
