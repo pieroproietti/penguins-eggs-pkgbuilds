@@ -91,7 +91,6 @@ for f in "$DESKTOP_DIR"/*.desktop; do chmod +x "$f"; gio set -t string "$f" meta
 $SUDO eggs config -n
 
 
-
 # with a second parameter exit
 if [ "$#" -gt 1 ]; then
   echo "penguins-eggs was installed with: no install requirements"
