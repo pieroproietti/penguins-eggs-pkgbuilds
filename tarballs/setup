@@ -103,7 +103,7 @@ fi
 # Install Requirements of the distro
 echo "install requirements..."
 case $DISTRO in
-    ALDOS)
+    aldos)
         echo "Detected distro ALDOS..."
         $SUDO ./requirements/aldos/install.sh
         ;;
