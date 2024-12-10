@@ -13,11 +13,6 @@ else
     SUDO='doas'
 fi
 
-# title
-clear
-EGGS_HOME="/opt/penguins-eggs/"
-echo "setup will install penguins-eggs on ${EGGS_HOME}"
-
 # start
 # Controlla se il primo argomento è vuoto
 if [ -z "$1" ]; then
@@ -26,6 +21,12 @@ if [ -z "$1" ]; then
 else
   EGGS_PACKAGE=$1
 fi
+
+# title
+clear
+EGGS_HOME="/opt/penguins-eggs/"
+echo "setup will install $EGGS_PACKAGE on $EGGS_HOME"
+
 
 # remove /opt/penguins-eggs
 $SUDO rm $EGGS_HOME -rf
@@ -92,8 +93,9 @@ $SUDO eggs config -n
 
 
 # with a second parameter exit
-if [ "$#" -gt 1 ]; then
-  echo "penguins-eggs was installed with: no install requirements"
+if [ "$#" -eq 1 ]; then
+  echo ""
+  echo "$EGGS_PACKAGE was installed"
   exit
 fi
 
@@ -158,3 +160,6 @@ case $DISTRO in
         exit 1
         ;;
 esac        
+
+  echo ""
+  echo "$EGGS_PACKAGE was installed WITH Requirements"
