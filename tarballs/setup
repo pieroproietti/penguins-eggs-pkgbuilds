@@ -126,7 +126,7 @@ case $DISTRO in
         echo "Detected distro Debian..."
         $SUDO ./requirements/debian/install.sh
         ;;
-    Devuan)
+    devuan)
         echo "Detected distro Devuan..."
         $SUDO ./requirements/devuan/install.sh
         ;;
