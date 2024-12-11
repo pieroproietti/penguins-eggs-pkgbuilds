@@ -118,7 +118,7 @@ case $DISTRO in
         $SUDO ./requirements/alpine/install.sh
         ;;
 
-    Arch)
+    arch)
         echo "Detected distro Arch..."
         $SUDO ./requirements/arch/install.sh
         ;;
