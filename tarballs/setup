@@ -135,7 +135,7 @@ case $DISTRO in
         $SUDO ./requirements/fedora/install.sh
         ;;
 
-    ManjaroLinux|BigLinux|BigCommunity)
+    manjaro)
         echo "Detected distro Manjaro based..."
         $SUDO ./requirements/manjarolinux/install.sh
         ;;
