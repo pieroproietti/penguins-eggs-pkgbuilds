@@ -17,15 +17,19 @@ dnf install -y \
     bash-completion \
     cryptsetup \
     curl \
+    device-mapper \
+    dmraid \
     dosfstools \
     dracut \
     fuse \
     git \
     jq \
     lvm2 \
+    nvme-cli \
+    parted \
     rsync \
-    squashfs \
     sshfs \
     wget \
     xdg-user-dirs \
-    xorriso
+    xorriso \
+    zstd
