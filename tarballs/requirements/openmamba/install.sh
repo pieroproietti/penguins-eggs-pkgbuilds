@@ -2,7 +2,7 @@
 
 # check if we are on openmamba
 if [ ! -f /etc/openmamba-release ]; then
-    echo "This script is only for OpenSUSE"
+    echo "This script is only for openmamba"
     exit
 fi
 
@@ -34,4 +34,4 @@ dnf install -y \
     xorriso \
     zstd
 
-# 13 dicembre 2004, NON TROVOt sshfs, jq, wget
+# 13 dicembre 2004, DVD boot but reset
