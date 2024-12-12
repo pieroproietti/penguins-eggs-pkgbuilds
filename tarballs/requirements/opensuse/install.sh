@@ -22,9 +22,7 @@ zypper install -y \
     dracut-tools \
     fuse \
     git \
-    grub2-efi-x64 \
-    grub2-efi-x64-modules \
-    grub2-tools-extra \
+    grub2-x86_64-efi \
     jq \
     lsb-release \
     lvm2 \
