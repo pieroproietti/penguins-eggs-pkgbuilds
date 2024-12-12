@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # check if we are on opensuse
 if [ ! -f /etc/os-release ]; then
