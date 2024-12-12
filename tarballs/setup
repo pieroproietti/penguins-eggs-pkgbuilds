@@ -104,34 +104,34 @@ fi
 echo "install requirements..."
 case $DISTRO in
     aldos)
-        echo "Detected distro ALDOS..."
+        echo "Detected distro ALDOS based..."
         $SUDO ./requirements/aldos/install.sh
         ;;
 
     almalinux|rocky)
-        echo "Detected distro AlmaLinux/RockyLinux..."
+        echo "Detected distro rhel based..."
         $SUDO ./requirements/rocky/install.sh
         ;;
 
     Alpine)
-        echo "Detected distro Alpine..."
+        echo "Detected distro Alpine based..."
         $SUDO ./requirements/alpine/install.sh
         ;;
 
     arch)
-        echo "Detected distro Arch..."
+        echo "Detected distro Arch based..."
         $SUDO ./requirements/arch/install.sh
         ;;
     debian)
-        echo "Detected distro Debian..."
+        echo "Detected distro Debian based..."
         $SUDO ./requirements/debian/install.sh
         ;;
     devuan)
-        echo "Detected distro Devuan..."
+        echo "Detected distro Devuan based..."
         $SUDO ./requirements/devuan/install.sh
         ;;
     fedora)
-        echo "Detected distro Fedora..."
+        echo "Detected distro Fedora based..."
         $SUDO ./requirements/fedora/install.sh
         ;;
 
@@ -141,17 +141,17 @@ case $DISTRO in
         ;;
     
     openmamba)
-        echo "Detected distro openmamba..."
+        echo "Detected distro openmamba base..."
         $SUDO ./requirements/openmamba/install.sh
         ;;
 
     opensuse-tumbleweed)
-        echo "Detected distro openSUSE..."
+        echo "Detected distro openSUSE based..."
         $SUDO ./requirements/opensuse/install.sh
         ;;
 
-    Ubuntu)
-        echo "Detected distro Ubuntu..."
+    Ubuntu|linuxmint)
+        echo "Detected distro Ubuntu based..."
         $SUDO ./requirements/ubuntu/install.sh
         ;;
 
