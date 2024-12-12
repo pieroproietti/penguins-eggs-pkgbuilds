@@ -145,7 +145,7 @@ case $DISTRO in
         $SUDO ./requirements/openmamba/install.sh
         ;;
 
-    openSUSE)
+    opensuse-tumbleweed)
         echo "Detected distro openSUSE..."
         $SUDO ./requirements/opensuse/install.sh
         ;;
