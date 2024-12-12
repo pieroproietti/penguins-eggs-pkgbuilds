@@ -33,3 +33,5 @@ dnf install -y \
     xdg-user-dirs \
     xorriso \
     zstd
+
+# 13 dicembre 2004, NON TROVOt sshfs, jq, wget
