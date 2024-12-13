@@ -52,7 +52,6 @@ dnf -y install \
     parted \
     rsync \
     squashfs-tools \
-    systemd-boot \
     sshfs \
     tar \
     wget \
