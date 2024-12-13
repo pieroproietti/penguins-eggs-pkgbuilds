@@ -8,6 +8,7 @@ pkgbase = penguins-eggs
 	makedepends = pnpm
 	depends = arch-install-scripts
 	depends = dosfstools
+	depends = efibootmgr
 	depends = erofs-utils
 	depends = findutils
 	depends = git
