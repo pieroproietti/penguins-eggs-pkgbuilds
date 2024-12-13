@@ -43,6 +43,7 @@ dnf -y install \
     fuse \
     git \
     grub2-efi-x64 \
+    grub2-efi-modules \
     grub2-efi-x64-modules \
     grub2-tools-extra \
     jq \
