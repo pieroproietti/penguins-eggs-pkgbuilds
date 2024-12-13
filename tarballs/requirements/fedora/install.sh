@@ -31,6 +31,7 @@ dnf -y install \
     dosfstools \
     dracut \
     dracut-live \
+    efibootmgr \
     fuse \
     git \
     grub2-efi-x64 \
