@@ -21,6 +21,7 @@ dnf install -y \
     dmraid \
     dosfstools \
     dracut \
+    efibootmgr \
     fuse \
     git \
     jq \
