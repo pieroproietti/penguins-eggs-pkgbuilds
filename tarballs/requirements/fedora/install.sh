@@ -44,6 +44,7 @@ dnf -y install \
     overlayfs-tools \
     parted \
     rsync \
+    shim \
     squashfs-tools \
     systemd-boot \
     sshfs \

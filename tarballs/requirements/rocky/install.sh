@@ -52,6 +52,7 @@ dnf -y install \
     nvme-cli \
     parted \
     rsync \
+    shim \
     squashfs-tools \
     sshfs \
     tar \
