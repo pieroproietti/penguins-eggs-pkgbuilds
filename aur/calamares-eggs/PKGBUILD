@@ -6,7 +6,7 @@
 _pkgname="calamares"
 pkgname="$_pkgname-eggs"
 _commit=""
-pkgver=3.3.10
+pkgver=3.3.12
 pkgrel=1
 pkgdesc="calamares-eggs: supply by penguins-eggs project"
 url="https://github.com/calamares/calamares"
