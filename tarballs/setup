@@ -1,166 +1,179 @@
 #!/bin/bash
 
 #####################################
-# Install panguins-eggs-tarball
+# Install penguins-eggs-tarball
 function install_tarball() {
     EGGS_PACKAGE=$1
     DISTRO=$2
 
-    if command -v sudo >/dev/null 2>&1; then
-        SUDO='sudo'
-    else
-        SUDO='doas'
+    # Controllo se il pacchetto tarball esiste
+    if [ ! -f "$EGGS_PACKAGE" ]; then
+         echo "Error: file $EGGS_PACKAGE don't exists."
+        exit 1
     fi
 
+    # Determinazione di SUDO
+    if command -v sudo >/dev/null 2>&1; then
+        SUDO='sudo'
+    elif command -v doas >/dev/null 2>&1; then
+        SUDO='doas'
+    else
+        echo "Errore: né sudo né doas sono disponibili."
+        exit 1
+    fi
 
     EGGS_HOME="/opt/penguins-eggs/"
-    echo "setup will install $EGGS_PACKAGE on $EGGS_HOME"
+    echo "setup installerà $EGGS_PACKAGE in $EGGS_HOME"
 
+    # Rimozione di /opt/penguins-eggs se esiste
+    if [ -d "$EGGS_HOME" ]; then
+        $SUDO rm -rf "$EGGS_HOME"
+    fi
 
-    # remove /opt/penguins-eggs
-    $SUDO rm $EGGS_HOME -rf
+    # Estrazione e installazione del pacchetto
+    tar -xf "$EGGS_PACKAGE"
+    if [ $? -ne 0 ]; then
+        echo "Errore: impossibile estrarre il file $EGGS_PACKAGE."
+        exit 1
+    fi
 
-    # install /opt/penguins-eggs
-    tar -xf $EGGS_PACKAGE
     mv eggs penguins-eggs
     $SUDO mv penguins-eggs /opt/
 
-    # recreate links grub/isolinux theme
-    $SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
-    $SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg 
+    # Ricreazione dei link per i temi grub/isolinux
+    $SUDO ln -sf "${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg" "${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg"
+    $SUDO ln -sf "${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg" "${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg"
 
-    # bash completions
+    # Bash completions
     if [ -d "/usr/share/bash-completion/completions/" ]; then
         $SUDO rm -f /usr/share/bash-completion/completions/eggs.bash
-        $SUDO ln -s ${EGGS_HOME}scripts/eggs.bash /usr/share/bash-completion/completions/eggs.bash
+        $SUDO ln -sf "${EGGS_HOME}scripts/eggs.bash" /usr/share/bash-completion/completions/eggs.bash
     fi
 
-    # zsh completions
+    # Zsh completions
     if [ -d "/usr/share/zsh/functions/Completion/Zsh/" ]; then
         $SUDO rm -f /usr/share/zsh/functions/Completion/Zsh/_eggs
-        $SUDO ln -s ${EGGS_HOME}scripts/_eggs /usr/share/zsh/functions/Completion/Zsh/
+        $SUDO ln -sf "${EGGS_HOME}scripts/_eggs" /usr/share/zsh/functions/Completion/Zsh/
     fi
 
-    # icons
+    # Icone
     if [ -d "/usr/share/icons/" ]; then
         $SUDO rm -f /usr/share/icons/eggs.png
-        $SUDO ln -s ${EGGS_HOME}assets/eggs.png /usr/share/icons/eggs.png
+        $SUDO ln -sf "${EGGS_HOME}assets/eggs.png" /usr/share/icons/eggs.png
     fi
 
-    # man
+    # Manuali
     if [ -d "/usr/share/man/man1" ]; then
         $SUDO rm -f /usr/share/man/man1/eggs.1.gz
-        $SUDO ln -s ${EGGS_HOME}manpages/doc/man/eggs.1.gz /usr/share/man/man1/eggs.1.gz
+        $SUDO ln -sf "${EGGS_HOME}manpages/doc/man/eggs.1.gz" /usr/share/man/man1/eggs.1.gz
     fi
 
+    # Link binario
     $SUDO rm -f /usr/bin/eggs
-    $SUDO ln -s ${EGGS_HOME}bin/eggs /usr/bin/eggs
+    $SUDO ln -sf "${EGGS_HOME}bin/eggs" /usr/bin/eggs
 
-    # desktop links
+    # Collegamenti desktop
     xdg-user-dirs-update --force
     DESKTOP_DIR=$(xdg-user-dir DESKTOP)
-    cp ${EGGS_HOME}addons/eggs/adapt/applications/eggs-adapt.desktop "${DESKTOP_DIR}"
-    cp ${EGGS_HOME}assets/penguins-eggs.desktop "${DESKTOP_DIR}"
-    for f in "$DESKTOP_DIR"/*.desktop; do chmod +x "$f"; gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"; done
+    cp "${EGGS_HOME}addons/eggs/adapt/applications/eggs-adapt.desktop" "${DESKTOP_DIR}"
+    cp "${EGGS_HOME}assets/penguins-eggs.desktop" "${DESKTOP_DIR}"
+    for f in "$DESKTOP_DIR"/*.desktop; do
+        chmod +x "$f"
+        gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"
+    done
 
-    # basic configuration
+    # Configurazione di base
     $SUDO eggs config -n
 
-
-    # with a second parameter exit
+    # Uscita se è stato passato un solo parametro
     if [ "$#" -eq 1 ]; then
-    echo ""
-    echo "$EGGS_PACKAGE was installed"
-    exit
+        echo ""
+        echo "$EGGS_PACKAGE è stato installato correttamente."
+        exit 0
     fi
 }
-
-
-
-
 
 #####################################
 # Install Requirements of the distro
 function install_requirements() {
     case $DISTRO in
         aldos)
-            echo "Detected distro ALDOS based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/aldos/install.sh
             ;;
 
         almalinux|rocky)
-            echo "Detected distro rhel based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/rocky/install.sh
             ;;
 
         arch)
-            echo "Detected distro Arch based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/arch/install.sh
             ;;
         debian)
-            echo "Detected distro Debian based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/debian/install.sh
             ;;
         devuan)
-            echo "Detected distro Devuan based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/devuan/install.sh
             ;;
         fedora)
-            echo "Detected distro Fedora based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/fedora/install.sh
             ;;
 
         manjaro|biglinux)
-            echo "Detected distro Manjaro based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/manjarolinux/install.sh
             ;;
-        
+
         openmamba)
-            echo "Detected distro openmamba base..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/openmamba/install.sh
             ;;
 
         opensuse-tumbleweed)
-            echo "Detected distro openSUSE based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/opensuse/install.sh
             ;;
 
         ubuntu|linuxmint)
-            echo "Detected distro Ubuntu based..."
+            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/ubuntu/install.sh
             ;;
 
         *)
-            echo "This distro is not supported: $DISTRO"
+            echo "Distro $DISTRO is not supported!"
             exit 1
             ;;
-    esac        
+    esac
 
     echo ""
-    echo "was installed $EGGS_PACKAGE Requirements"
+    echo "Requirements  of $EGGS_PACKAGE was installed."
 }
-
 
 #
 # main
 #
 
 clear
-echo "penguins-eggs-tarball installing"
+echo "Installazione di penguins-eggs-tarball in corso..."
 
-# if is root, abort
+# Se l'utente è root, abortisci
 if [ "$(id -u)" -eq 0 ]; then
-    echo "This script must be run as normal user"
+    echo "usage: setup /path/to/tarball [requirements]"
     exit 1
 fi
 
-# Se non viene passato nessun parametro
+# Controllo dei parametri
 if [ -z "$1" ]; then
-    echo "usage: setup /path/to/penguins-eggs-tarball [requisites]"
+    echo "Uso: setup /path/to/penguins-eggs-tarball [requisites]"
     exit 1
 fi
 
-#  Verifica la distribuzione Linux in uso
+# Rilevamento della distribuzione Linux
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     DISTRO=$ID
@@ -170,17 +183,15 @@ elif [ -f /etc/lsb-release ]; then
 elif [ -f /etc/redhat-release ]; then
     DISTRO=$(awk '{print $1}' /etc/redhat-release)
 else
-    echo "Distribuzione Linux non riconosciuta."
+    echo "Distro not recognized."
     exit 1
 fi
 
-echo "Distro ${DISTRO}"
-
-
-# se è passato il secondo parametro installiamo i requisiti
-if [ -z "$2" ]; then
-    echo "installing Requirements"
+# Installazione dei requisiti se il secondo parametro è specificato
+if [ -n "$2" ] && [ "$2" == "requisites" ]; then
+    echo "Requirements installations..."
     install_requirements $DISTRO
 fi
 
+# Installazione del pacchetto tarball
 install_tarball $1 $DISTRO
