@@ -3,20 +3,14 @@
 #####################################
 # Install panguins-eggs-tarball
 function install_tarball() {
+    EGGS_PACKAGE=$1
+
     if command -v sudo >/dev/null 2>&1; then
         SUDO='sudo'
     else
         SUDO='doas'
     fi
 
-    # start
-    # Controlla se il primo argomento è vuoto
-    if [ -z "$1" ]; then
-        echo "You must pass tarballs path"
-        exit 1
-    else
-    EGGS_PACKAGE=$1
-    fi
 
     # title
     clear
@@ -186,8 +180,8 @@ if [ -z "$1" ]; then
 fi
 
 # se è passato il secondo parametro installiamo i requisiti
-if [ -z "$1" ]; then
+if [ -z "$2" ]; then
     install_requirements
 fi
 
-install_tarball
+install_tarball $1 
