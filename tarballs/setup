@@ -189,7 +189,7 @@ fi
 echo "Distro: ${DISTRO}"
 
 # Installazione dei requisiti se il secondo parametro è specificato
-if [ -n "$2" ] && [ "$2" == "--requirements" ]; then
+if [ -n "$2" ]; then
     echo "Requirements installations..."
     install_requirements $DISTRO
 fi
