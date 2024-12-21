@@ -84,64 +84,62 @@ function install_tarball() {
 #####################################
 # Install Requirements of the distro
 function install_requirements() {
+    case $DISTRO in
+        aldos)
+            echo "Detected distro ALDOS based..."
+            $SUDO ./requirements/aldos/install.sh
+            ;;
 
-echo "install requirements..."
-case $DISTRO in
-    aldos)
-        echo "Detected distro ALDOS based..."
-        $SUDO ./requirements/aldos/install.sh
-        ;;
+        almalinux|rocky)
+            echo "Detected distro rhel based..."
+            $SUDO ./requirements/rocky/install.sh
+            ;;
 
-    almalinux|rocky)
-        echo "Detected distro rhel based..."
-        $SUDO ./requirements/rocky/install.sh
-        ;;
+        arch)
+            echo "Detected distro Arch based..."
+            $SUDO ./requirements/arch/install.sh
+            ;;
+        debian)
+            echo "Detected distro Debian based..."
+            $SUDO ./requirements/debian/install.sh
+            ;;
+        devuan)
+            echo "Detected distro Devuan based..."
+            $SUDO ./requirements/devuan/install.sh
+            ;;
+        fedora)
+            echo "Detected distro Fedora based..."
+            $SUDO ./requirements/fedora/install.sh
+            ;;
 
-    arch)
-        echo "Detected distro Arch based..."
-        $SUDO ./requirements/arch/install.sh
-        ;;
-    debian)
-        echo "Detected distro Debian based..."
-        $SUDO ./requirements/debian/install.sh
-        ;;
-    devuan)
-        echo "Detected distro Devuan based..."
-        $SUDO ./requirements/devuan/install.sh
-        ;;
-    fedora)
-        echo "Detected distro Fedora based..."
-        $SUDO ./requirements/fedora/install.sh
-        ;;
+        manjaro|biglinux)
+            echo "Detected distro Manjaro based..."
+            $SUDO ./requirements/manjarolinux/install.sh
+            ;;
+        
+        openmamba)
+            echo "Detected distro openmamba base..."
+            $SUDO ./requirements/openmamba/install.sh
+            ;;
 
-    manjaro|biglinux)
-        echo "Detected distro Manjaro based..."
-        $SUDO ./requirements/manjarolinux/install.sh
-        ;;
-    
-    openmamba)
-        echo "Detected distro openmamba base..."
-        $SUDO ./requirements/openmamba/install.sh
-        ;;
+        opensuse-tumbleweed)
+            echo "Detected distro openSUSE based..."
+            $SUDO ./requirements/opensuse/install.sh
+            ;;
 
-    opensuse-tumbleweed)
-        echo "Detected distro openSUSE based..."
-        $SUDO ./requirements/opensuse/install.sh
-        ;;
+        ubuntu|linuxmint)
+            echo "Detected distro Ubuntu based..."
+            $SUDO ./requirements/ubuntu/install.sh
+            ;;
 
-    ubuntu|linuxmint)
-        echo "Detected distro Ubuntu based..."
-        $SUDO ./requirements/ubuntu/install.sh
-        ;;
+        *)
+            echo "This distro is not supported: $DISTRO"
+            exit 1
+            ;;
+    esac        
 
-    *)
-        echo "This distro is not supported: $DISTRO"
-        exit 1
-        ;;
-esac        
-
-  echo ""
-  echo "$EGGS_PACKAGE was installed WITH Requirements"
+    echo ""
+    echo "was installed $EGGS_PACKAGE Requirements"
 }
 
 
@@ -176,11 +174,12 @@ else
     exit 1
 fi
 
-echo "Distro ${DISTRO}
+echo "Distro ${DISTRO}"
 
 
 # se è passato il secondo parametro installiamo i requisiti
 if [ -z "$2" ]; then
+    echo "installing Requirements"
     install_requirements $DISTRO
 fi
 
