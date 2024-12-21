@@ -17,7 +17,6 @@ function install_tarball() {
     fi
 
     EGGS_HOME="/opt/penguins-eggs/"
-    echo "setup installerà $EGGS_PACKAGE in $EGGS_HOME"
 
     # Rimozione di /opt/penguins-eggs se esiste
     if [ -d "$EGGS_HOME" ]; then
@@ -27,7 +26,7 @@ function install_tarball() {
     # Estrazione e installazione del pacchetto
     tar -xf "$EGGS_PACKAGE"
     if [ $? -ne 0 ]; then
-        echo "Errore: impossibile estrarre il file $EGGS_PACKAGE."
+        echo "Error: not possoble extract $EGGS_PACKAGE."
         exit 1
     fi
 
@@ -73,18 +72,15 @@ function install_tarball() {
     cp "${EGGS_HOME}assets/penguins-eggs.desktop" "${DESKTOP_DIR}"
     for f in "$DESKTOP_DIR"/*.desktop; do
         chmod +x "$f"
-        gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')"
+        gio set -t string "$f" metadata::xfce-exe-checksum "$(sha256sum "$f" | awk '{print $1}')" 2>&1 > /dev/null
     done
 
     # Configurazione di base
     $SUDO eggs config -n
 
-    # Uscita se è stato passato un solo parametro
-    if [ "$#" -eq 1 ]; then
-        echo ""
-        echo "$EGGS_PACKAGE è stato installato correttamente."
-        exit 0
-    fi
+    echo ""
+    echo "$EGGS_PACKAGE was installed."
+    exit 0
 }
 
 #####################################
