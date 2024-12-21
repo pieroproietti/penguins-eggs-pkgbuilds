@@ -13,8 +13,6 @@ function install_tarball() {
     fi
 
 
-    # title
-    clear
     EGGS_HOME="/opt/penguins-eggs/"
     echo "setup will install $EGGS_PACKAGE on $EGGS_HOME"
 
@@ -143,10 +141,12 @@ function install_requirements() {
 }
 
 
-
 #
 # main
 #
+
+clear
+echo "penguins-eggs-tarball installing"
 
 # if is root, abort
 if [ "$(id -u)" -eq 0 ]; then
