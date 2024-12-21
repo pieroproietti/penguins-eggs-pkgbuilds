@@ -26,20 +26,6 @@ function install_tarball() {
     mv eggs penguins-eggs
     $SUDO mv penguins-eggs /opt/
 
-    #  Verifica la distribuzione Linux in uso
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        DISTRO=$ID
-    elif [ -f /etc/lsb-release ]; then
-        . /etc/lsb-release
-        DISTRO=$DISTRIB_ID
-    elif [ -f /etc/redhat-release ]; then
-        DISTRO=$(awk '{print $1}' /etc/redhat-release)
-    else
-        echo "Distribuzione Linux non riconosciuta."
-        exit 1
-    fi
-
     # recreate links grub/isolinux theme
     $SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/isolinux.main.cfg 
     $SUDO ln -s ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.full.cfg ${EGGS_HOME}addons/eggs/theme/livecd/grub.main.cfg 
@@ -171,6 +157,20 @@ fi
 # Se non viene passato nessun parametro
 if [ -z "$1" ]; then
     echo "usage: setup /path/to/penguins-eggs-tarball [requisites]"
+    exit 1
+fi
+
+#  Verifica la distribuzione Linux in uso
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    DISTRO=$ID
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    DISTRO=$DISTRIB_ID
+elif [ -f /etc/redhat-release ]; then
+    DISTRO=$(awk '{print $1}' /etc/redhat-release)
+else
+    echo "Distribuzione Linux non riconosciuta."
     exit 1
 fi
 
