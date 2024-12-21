@@ -2,7 +2,7 @@
 if [ -z "$1" ]; then
     REQUIREMENTS=""
 else
-    REQUIREMENTS="requirements"
+    REQUIREMENTS="--requirements"
 fi
 
 rm -f penguins-eggs-tarball*
