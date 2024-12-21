@@ -12,16 +12,6 @@ function install_tarball() {
         exit 1
     fi
 
-    # Determinazione di SUDO
-    if command -v sudo >/dev/null 2>&1; then
-        SUDO='sudo'
-    elif command -v doas >/dev/null 2>&1; then
-        SUDO='doas'
-    else
-        echo "Errore: né sudo né doas sono disponibili."
-        exit 1
-    fi
-
     EGGS_HOME="/opt/penguins-eggs/"
     echo "setup installerà $EGGS_PACKAGE in $EGGS_HOME"
 
@@ -187,6 +177,16 @@ else
     exit 1
 fi
 echo "Distro: ${DISTRO}"
+
+# Determinazione di SUDO
+if command -v sudo >/dev/null 2>&1; then
+    SUDO='sudo'
+elif command -v doas >/dev/null 2>&1; then
+    SUDO='doas'
+else
+    echo "Errore: né sudo né doas sono disponibili."
+    exit 1
+fi
 
 # Installazione dei requisiti se il secondo parametro è specificato
 if [ -n "$2" ]; then
