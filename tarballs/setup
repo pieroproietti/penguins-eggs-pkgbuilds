@@ -4,6 +4,7 @@
 # Install panguins-eggs-tarball
 function install_tarball() {
     EGGS_PACKAGE=$1
+    DISTRO=$2
 
     if command -v sudo >/dev/null 2>&1; then
         SUDO='sudo'
@@ -16,20 +17,6 @@ function install_tarball() {
     clear
     EGGS_HOME="/opt/penguins-eggs/"
     echo "setup will install $EGGS_PACKAGE on $EGGS_HOME"
-
-    #  Verifica la distribuzione Linux in uso
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        DISTRO=$ID
-    elif [ -f /etc/lsb-release ]; then
-        . /etc/lsb-release
-        DISTRO=$DISTRIB_ID
-    elif [ -f /etc/redhat-release ]; then
-        DISTRO=$(awk '{print $1}' /etc/redhat-release)
-    else
-        echo "Distribuzione Linux non riconosciuta."
-        exit 1
-    fi
 
 
     # remove /opt/penguins-eggs
@@ -97,19 +84,6 @@ function install_tarball() {
 #####################################
 # Install Requirements of the distro
 function install_requirements() {
-#  Verifica la distribuzione Linux in uso
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    DISTRO=$ID
-elif [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    DISTRO=$DISTRIB_ID
-elif [ -f /etc/redhat-release ]; then
-    DISTRO=$(awk '{print $1}' /etc/redhat-release)
-else
-    echo "Distribuzione Linux non riconosciuta."
-    exit 1
-fi
 
 echo "install requirements..."
 case $DISTRO in
@@ -188,10 +162,26 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+#  Verifica la distribuzione Linux in uso
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    DISTRO=$ID
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    DISTRO=$DISTRIB_ID
+elif [ -f /etc/redhat-release ]; then
+    DISTRO=$(awk '{print $1}' /etc/redhat-release)
+else
+    echo "Distribuzione Linux non riconosciuta."
+    exit 1
+fi
+
+echo "Distro ${DISTRO}
+
 
 # se è passato il secondo parametro installiamo i requisiti
 if [ -z "$2" ]; then
-    install_requirements
+    install_requirements $DISTRO
 fi
 
-install_tarball $1 
+install_tarball $1 $DISTRO
