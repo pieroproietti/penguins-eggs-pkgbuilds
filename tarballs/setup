@@ -6,6 +6,10 @@ function install_tarball() {
     EGGS_PACKAGE=$1
     DISTRO=$2
 
+    echo ""
+    echo "install package penguins-eggs on ${DISTRO} from ${EGGS_PACKAGE}"
+    echo ""
+
     # Controllo se il pacchetto tarball esiste
     if [ ! -f "$EGGS_PACKAGE" ]; then
          echo "Error: file $EGGS_PACKAGE don't exists."
@@ -86,56 +90,50 @@ function install_tarball() {
 #####################################
 # Install Requirements of the distro
 function install_requirements() {
+
+    echo "Requirements installations for distro: ${DISTRO}"
+    echo ""
+   
     case $DISTRO in
         aldos)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/aldos/install.sh
             ;;
 
         almalinux|rocky)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/rocky/install.sh
             ;;
 
         arch)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/arch/install.sh
             ;;
         debian)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/debian/install.sh
             ;;
         devuan)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/devuan/install.sh
             ;;
         fedora)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/fedora/install.sh
             ;;
 
         manjaro|biglinux)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/manjarolinux/install.sh
             ;;
 
         openmamba)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/openmamba/install.sh
             ;;
 
         opensuse-tumbleweed)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/opensuse/install.sh
             ;;
 
         ubuntu|linuxmint)
-            echo "Distro $DISTRO detect..."
             $SUDO ./requirements/ubuntu/install.sh
             ;;
 
         *)
-            echo "Distro $DISTRO is not supported!"
+            echo "This distro: $DISTRO is not supported!"
             exit 1
             ;;
     esac
@@ -149,7 +147,8 @@ function install_requirements() {
 #
 
 clear
-echo "Installazione di penguins-eggs-tarball in corso..."
+echo "installing penguins-eggs-tarball..."
+echo ""
 
 # Se l'utente è root, abortisci
 if [ "$(id -u)" -eq 0 ]; then
@@ -176,7 +175,7 @@ else
     echo "Distro not recognized."
     exit 1
 fi
-echo "Distro: ${DISTRO}"
+echo "Distro recognized: ${DISTRO}"
 
 # Determinazione di SUDO
 if command -v sudo >/dev/null 2>&1; then
@@ -190,7 +189,6 @@ fi
 
 # Installazione dei requisiti se il secondo parametro è specificato
 if [ -n "$2" ]; then
-    echo "Requirements installations..."
     install_requirements $DISTRO
 fi
 
