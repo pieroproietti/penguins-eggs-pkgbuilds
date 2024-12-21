@@ -109,11 +109,6 @@ case $DISTRO in
         $SUDO ./requirements/rocky/install.sh
         ;;
 
-    Alpine)
-        echo "Detected distro Alpine based..."
-        $SUDO ./requirements/alpine/install.sh
-        ;;
-
     arch)
         echo "Detected distro Arch based..."
         $SUDO ./requirements/arch/install.sh
@@ -146,7 +141,7 @@ case $DISTRO in
         $SUDO ./requirements/opensuse/install.sh
         ;;
 
-    Ubuntu|linuxmint)
+    ubuntu|linuxmint)
         echo "Detected distro Ubuntu based..."
         $SUDO ./requirements/ubuntu/install.sh
         ;;
