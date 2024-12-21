@@ -186,6 +186,7 @@ else
     echo "Distro not recognized."
     exit 1
 fi
+echo "Distro: ${DISTRO}"
 
 # Installazione dei requisiti se il secondo parametro è specificato
 if [ -n "$2" ] && [ "$2" == "requisites" ]; then
