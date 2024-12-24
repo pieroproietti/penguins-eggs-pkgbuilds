@@ -5,9 +5,9 @@
 
 _pkgname="calamares"
 pkgname="$_pkgname-eggs"
-_commit=""
+_commit=d4847ce802452c1e26605a64ba06d40c4736d742
 pkgver=3.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="calamares-eggs: supply by penguins-eggs project"
 url="https://github.com/calamares/calamares"
 license=("GPL-3.0-or-later")
@@ -53,10 +53,10 @@ backup=(
 )
 
 _pkgsrc="$_pkgname" # commit
-_pkgsrc="$_pkgname-$pkgver" # released
+#_pkgsrc="$_pkgname-$pkgver" # released
 
-#source=("git+https://github.com/calamares/calamares#commit=${_commit}")
-source=("https://github.com/calamares/calamares/releases/download/v$pkgver/calamares-$pkgver.tar.gz")
+source=("git+https://github.com/calamares/calamares#commit=${_commit}")
+#source=("https://github.com/calamares/calamares/releases/download/v$pkgver/calamares-$pkgver.tar.gz")
 sha256sums=(
   'SKIP'
 )
